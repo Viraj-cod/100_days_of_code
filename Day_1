@@ -1,0 +1,11 @@
+def rotate_array(arr,num):
+    for i in range(num):
+        ele = arr.pop(0)
+        arr.append(ele)
+    return arr
+        
+if __name__ == '__main__':
+    inp = list(map(int,input("Enter the array elements:").split()))
+    num = int(input("Enter the number of rotation:"))
+    res = rotate_array(inp,num)
+    print(res)
