@@ -1,0 +1,17 @@
+def Nextgreater(arr,num):
+    res = []
+    for i in range(len(arr)):
+        point = True
+        for j in arr[i:]:
+            if arr[i] < j :
+                res.append(j)
+                point = False
+                break
+        if point == True:
+            res.append(-1)
+    return res
+
+if __name__ == '__main__':
+    inp = list(map(int,input("Enter the array elements:").split()))
+    num = int(input("Number of Elements:"))
+    print(*Nextgreater(inp,num))
