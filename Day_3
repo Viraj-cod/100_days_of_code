@@ -1,0 +1,13 @@
+class Solution:
+	def closestPalindrome(self, num):
+	    res = []
+	    for i in range(num+1):
+	        temp = str(i)
+	        if temp == temp[::-1]:
+	            res.append(i)
+	    return max(res)
+
+inp = int(input("Enter the number:"))
+res = Solution()
+temp = res.closestPalindrome(inp)
+print(temp)
