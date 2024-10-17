@@ -1,0 +1,21 @@
+class Buy_and_sell:
+    def stock(self,arr):
+        res = []
+        srt = sorted(arr)
+        if arr != srt:
+            for i in range(len(arr)):
+                temp = arr[i:]
+                for j in temp:
+                    if arr[i] > j:
+                        break
+                    elif arr[i] != j and arr[i] < j:
+                        res.append(j-arr[i])
+                        break
+            return sum(res)
+        else:
+            return (arr[-1] - arr[0])
+
+obj = Buy_and_sell()
+Inp = list(map(int,input("Enter the Stock buying nad selling prices on the dates:").split()))
+result = obj.stock(Inp)
+print(result)
