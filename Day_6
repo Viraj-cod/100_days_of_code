@@ -1,0 +1,33 @@
+class stack:
+    def __init__(self):
+        self.lst = []
+    def push(self,num):
+        self.lst.append(num)
+    def pop(self):
+        self.lst.pop(-1)
+    def getMin(self):
+        return min(self.lst)
+    def getMax(self):
+        return max(self.lst)
+    def Display(self):
+        return self.lst
+    
+if __name__ == '__main__':
+    obj = stack()
+    print('The Stack Operations')
+    print('1.Push\n2.Pop\n3.Get the Maximum\n4.Get the Minimum\n5.Display stack\n6.Exit')
+    while 1:
+        op = int(input("Enter the operation:"))
+        if op == 1:
+            ele = int(input("Enter the element to push:"))
+            obj.push(ele)
+        elif op == 2:
+            obj.pop()
+        elif op == 3:
+            print(obj.getMax())
+        elif op == 4:
+            print(obj.getMin())
+        elif op == 5:
+            print(obj.Display())
+        elif op == 6:
+            break
