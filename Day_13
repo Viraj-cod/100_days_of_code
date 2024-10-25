@@ -1,0 +1,16 @@
+def special_check(arr):
+    spl = []
+    cp = arr.copy()
+    for i in range(len(arr)):
+        temp = arr.pop(i)
+        for j in arr:
+            if temp % j == 0 :
+                spl.append(i)
+                break
+        arr = cp.copy()
+    return len(spl)
+
+if __name__ == '__main__':
+    lst = list(map(int,input("Enter the array:").split()))
+    res = special_check(lst)
+    print(res)
