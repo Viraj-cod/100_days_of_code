@@ -1,0 +1,27 @@
+class kth_largest:
+    def __init__(self):
+        self.temp = []
+    
+    def add(self,num):
+        self.temp.append(num)
+    
+    def check(self,k):
+        srt = sorted(self.temp)
+        if len(srt) >= k:
+            return srt[-k]
+        else:
+            return -1
+
+if __name__ == '__main__':
+    k = int(input("Enter the value of K:"))
+    n = int(input("Enter the number of elements:"))
+    obj = kth_largest()
+    res = []
+    for i in range(n):
+        num = int(input(f"Enter the {i+1} value:"))
+        obj.add(num)
+        temp = obj.check(k)
+        res.append(temp)
+    print(res)
+        
+        
