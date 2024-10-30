@@ -1,0 +1,24 @@
+class jump:
+    def __init__(self,num):
+        self.num = num
+        self.temp = []
+
+    def check(self):
+        for i in range(self.num+1):
+            count = 0
+            if i<10:
+                self.temp.append(i)
+            elif i >= 10:
+                ele = str(i)
+                for i in range(len(ele)):
+                    if (i < len(ele)-1) and (int(ele[i]) - int(ele[i+1]) == 1 or int(ele[i]) - int(ele[i+1]) == -1):
+                        count += 1
+                if count == len(ele) - 1:
+                    self.temp.append(int(ele))
+        return self.temp
+        
+if __name__ == '__main__':
+    number = int(input("Enter the number:"))
+    obj = jump(number)
+    res = obj.check()
+    print(max(res))
