@@ -1,0 +1,39 @@
+class wordbreak:
+    def __init__(self,srt,dictionary):
+        self.srt = srt
+        self.dictionary = dictionary
+        self.temp = []
+    
+    def create(self):
+        for i in range(len(self.srt)):
+            if i == 0:
+                self.temp.append(self.srt[i])
+            else:
+                e = self.srt[i:]
+                self.temp.append(e)
+    
+    def check(self):
+        get = []
+        res = ''
+        for i in self.temp:
+            if i in self.dictionary:
+                get.append(i)
+        for i in get:
+            res += i
+        if len(self.srt) ==len(res):
+            return 1
+        else:
+            return 0
+    
+if __name__ == '__main__':
+    num = int(input("Enter the number of words in dictionary:"))
+    word = input('Enter the word:')
+    dictionary = set()
+    for i in range(num):
+        temp = input('Enter the word in dictionary:')
+        dictionary.add(temp)
+    lst = list(dictionary)
+    obj = wordbreak(word,lst)
+    obj.create()
+    result = obj.check()
+    print(result)
