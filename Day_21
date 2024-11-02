@@ -1,0 +1,31 @@
+import string
+def coding(msg):
+    coded = []
+    for i in range(len(msg)):
+        if i == 0:
+            continue
+        else:
+            var = msg[:i] + ' ' + msg[i:]
+            coded.append(var)
+    return coded
+
+def decoding(arr):
+    result = []
+    alp = '0' + string.ascii_uppercase
+    for i in arr:
+        temp = []
+        f = i.split()
+        if '0' not in f:
+            for j in f:
+                for k in range(1,len(alp)):
+                    if j == str(k):
+                        temp.append(alp[k])
+            result.append(temp)
+        else:
+            return '0 doesnt match with any character'
+    return result
+    
+if __name__ == '__main__':
+    inp = input("Enter the coded message:")
+    msg = coding(inp)
+    res = decoding(msg)
