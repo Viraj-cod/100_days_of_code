@@ -29,3 +29,4 @@ if __name__ == '__main__':
     inp = input("Enter the coded message:")
     msg = coding(inp)
     res = decoding(msg)
+    print(len(res) + 1)
