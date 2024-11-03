@@ -1,0 +1,12 @@
+def search_in_sorted_array(arr,key):
+    for i in range(len(arr)):
+        if arr[i] == key:
+            return i
+    else:
+        return -1
+        
+if __name__ == '__main__':
+    arr = list(map(int,input("Enter the array:").split()))
+    key = int(input("Enter the key:"))
+    result = search_in_sorted_array(arr,key)
+    print(result)
