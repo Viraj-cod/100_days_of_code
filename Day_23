@@ -1,0 +1,16 @@
+def final(arr,lts):
+    count =[]
+    for i in range(len(arr)):
+        for j in range(len(lts)):
+            if arr[i] == lts[i]:
+                break
+            else:
+                count.append(arr[i])
+                break
+    return len(count)
+
+if __name__ == '__main__':
+    a = [1,2,3,6,5,4]
+    b = sorted(a)
+    i= final(a,b)
+    print(i)
