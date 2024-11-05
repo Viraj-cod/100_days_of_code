@@ -9,7 +9,7 @@ def coding(msg):
             coded.append(var)
     return coded
 
-def decoding(arr):
+def decoding(arr): #decoding
     result = []
     alp = '0' + string.ascii_uppercase
     for i in arr:
