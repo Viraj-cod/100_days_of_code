@@ -17,4 +17,5 @@ def stictly_increasing(k):
     
 if __name__ == '__main__':
     arr = list(map(int,input().split()))
-    print(stictly_increasing(arr))
+    result = stictly_increasing(arr)
+    print(result)
