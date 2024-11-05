@@ -1,16 +1,20 @@
-def final(arr,lts):
-    count =[]
-    for i in range(len(arr)):
-        for j in range(len(lts)):
-            if arr[i] == lts[i]:
+def stictly_increasing(k):
+    j = sorted(k)
+    lst = j.pop()
+    ln = len(j)
+    start = lst - ln
+    result = []
+    for i in range(start,lst+1):
+        result.append(i)
+    new = []
+    count = 0
+    for i in range(len(k)):
+        for j in range(len(result)):
+            if k[i] != result[i]:
+                count += 1
                 break
-            else:
-                count.append(arr[i])
-                break
-    return len(count)
-
+    return count
+    
 if __name__ == '__main__':
-    a = [1,2,3,6,5,4]
-    b = sorted(a)
-    i= final(a,b)
-    print(i)
+    arr = list(map(int,input().split()))
+    print(stictly_increasing(arr))
