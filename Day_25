@@ -1,0 +1,16 @@
+def circular_sum(a):
+    b = a.copy()
+    c = a[1:]+b
+    temp =[]
+    for i in range(len(c)):
+        for j in range(len(c)):
+            l = c[i:j]
+            if l and len(l) <= len(c)/2:
+                temp.append(l)
+    return max([sum(i) for i in temp])
+
+if __name__ == '__main__':
+    a = list(map(int,input("Enter the array:").split()))
+    res = circular_sum(a)
+    print(res)
+
