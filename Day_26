@@ -1,0 +1,18 @@
+def sorted_median(a,b):
+    k = a + b
+    c = sorted(k)
+    if len(c) % 2 != 0:
+        mid = len(c) / 2
+        return c[int(mid)]
+    elif len(c) % 2 == 0:
+        mid = int(len(c) / 2)
+        first = c[mid-1]
+        second = c[mid]
+        return float((first+second)/2)
+
+if __name__ == '__main__':
+    first = list(map(int,input("Enter the first array:").split()))
+    second = list(map(int,input("Enter the second array:").split()))
+    result = sorted_median(first,second)
+    print(result)
+    
