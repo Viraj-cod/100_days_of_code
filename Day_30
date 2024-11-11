@@ -1,0 +1,16 @@
+class Min_sum:
+    def find(self,arr):
+        a = ''
+        b = ''
+        sort = sorted(arr)
+        for i in range(len(arr)):
+            if i % 2 == 0:
+                a += str(sort[i])
+            else:
+                b += str(sort[i])
+        return int(a) + int(b)
+            
+if __name__ == '__main__':
+    inp = list(map(int,input("Enter the array elements:").split()))
+    obj = Min_sum()
+    print(obj.find(inp))
