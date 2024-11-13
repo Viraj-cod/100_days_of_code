@@ -1,0 +1,34 @@
+def divide(h):
+    bt = False
+    res=[]
+    temp = 0
+    for i in range(len(h)):
+        if h[i] == '.' and bt == False:
+            res.append(h[temp:i])
+            bt = True
+            temp = i+1
+        elif h[i] == '.' and bt == True:
+            res.append(h[temp:i])
+            bt = False
+            temp = i+1
+    res.append(h[temp:])
+    return res
+
+def check(ip):
+    res = divide(ip)
+    count = 0
+    try:
+        for i in res:
+            if int(i) in range(0,256):
+                count += 1
+        if count == 4:
+            return True
+        else:
+            return False
+    except:
+        return 'Input might be wrong ! please check'
+
+if __name__ == '__main__':
+    IP = input("Enter an IP adress:")
+    print(check(IP))
+    
