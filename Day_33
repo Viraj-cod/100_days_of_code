@@ -1,0 +1,15 @@
+def sort(arr):
+    temp = [i for i in arr]
+    for i in arr:
+        count = 0
+        for j in arr:
+            if i >j:
+                count +=1
+        temp[count] = i
+    return temp
+
+if __name__ == '__main__':
+    ele = list(map(int,input("Enter the Elements of the array: ").split()))
+    print(sort(ele))
+    
+        
