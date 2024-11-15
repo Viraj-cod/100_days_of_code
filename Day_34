@@ -1,0 +1,17 @@
+def triplets(a):
+    #res = []
+    for i in a:
+        for j in a:
+            if i !=j:
+                for k in a:
+                    if k!=i and k!=j:
+                        if i + j + k == 0:
+                            #temp = str(i)+' '+str(j)+' '+str(k)
+                            #res.append(temp)
+                            return True
+                        else:
+                            return False
+
+if __name__ == '__main__':
+    arr = list(map(int,input("Enter the elements:").split()))
+    print(triplets(arr))
