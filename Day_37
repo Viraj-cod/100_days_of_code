@@ -1,0 +1,25 @@
+class convert:
+    def __init__(self,sone,stwo):
+        self.sone = sone
+        self.stwo = stwo
+    
+    def opr(self):
+        temp = []
+        if self.sone == self.stwo:
+            return 0
+        if len(self.sone) >= len(self.stwo): 
+            for i in self.sone:
+                if i not in self.stwo:
+                    temp.append(i)
+            return len(temp)
+        else:
+            for i in self.stwo:
+                if i not in self.sone:
+                    temp.append(i)
+            return len(temp)
+            
+if __name__ == '__main__':
+    one = input('Enter first string:')
+    two = input('Enter the second string:')
+    obj = convert(one,two)
+    print(obj.opr())
