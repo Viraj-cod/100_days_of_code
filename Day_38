@@ -1,0 +1,30 @@
+def long_pre_suf(g):
+    if len(set(g)) == 1:
+        return len(g) - 1
+    elif len(g) % 2 != 0:
+        ln = int(len(g)/2)
+        x = g[:ln]
+        y = g[ln+1:]
+        count = 0
+        for i in range(ln):
+            for j in range(ln):
+                if x[i] == y[j] and (i == 0 or x[i-1] == y[j-1]):
+                    count += 1
+                    break
+        return count
+    elif len(g) % 2 == 0:
+        ln = int(len(g)/2)
+        #print(ln)
+        x = g[:ln]
+        y = g[ln:]
+        count = 0
+        for i in range(ln):
+            for j in range(ln):
+                if x[i] == y[j] and (i == 0 or x[i-1] == y[j-1]):
+                    count += 1
+                    break
+        return count
+            
+if __name__ == '__main__':
+    srt = input("Enter the string:")
+    print(long_pre_suf(srt))
