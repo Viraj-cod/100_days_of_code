@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+class linked_list:
+    def __init__(self):
+        self.head = None
+    
+    def add(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print('None')
+        
+    def rev(self,k):
+        first = []
+        second = []
+        temp = self.head
+        count = 0
+        while temp is not None:
+            if count < k:
+                first.append(temp.data)
+            else:
+                second.append(temp.data)
+            temp = temp.next
+            count += 1
+        return first[::-1],second[::-1]
+    
+    def res(self,v):
+        one,two = self.rev(v)
+        mrg = one + two
+        self.head = None
+        for i in mrg:
+            self.add(i)
+        return self.display()
+        
+if __name__ == '__main__':
+    ll = linked_list()
+    print('add values to linked list\npress 0 to exit:')
+    while 1:
+        inp = int(input(''))
+        if inp == 0:
+            break
+        ll.add(inp)
+    lmt = int(input('Enter the k:'))
+    ll.res(lmt)
+            
+        
