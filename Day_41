@@ -1,0 +1,22 @@
+def cele(m):
+    temp = []
+    for i in m:
+        for j in range(len(i)):
+            if i[j] == 1:
+                temp.append(j)
+    if len(set(temp)) == 1:
+        return temp[0]
+    else:
+        return -1
+        
+if __name__ == '__main__':
+    mat = []
+    sz = int(input("Enter the size of the matrix:"))
+    for a in range(sz):
+        temp = []
+        print(f'{a} th row')
+        for b in range(sz):
+            p = int(input())
+            temp.append(p)
+        mat.append(temp)
+    print('celebrity index is:',cele(mat))
