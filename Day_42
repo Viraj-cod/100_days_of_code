@@ -1,0 +1,55 @@
+def cal(mat):
+    count = 0
+    for i in range(len(mat)):
+        for j in range(len(mat[i])):
+            if j == 0:
+                if mat[i][j] == 1 and mat[i][j+1] == 2:
+                    count += 1
+                    break
+            elif j == len(mat[i])-1:
+                if mat[i][j] == 1 and mat[i][j-1] == 2:
+                    count += 1
+                    break
+            else:
+                if mat[i][j] == 1 and (mat[i][j-1] == 2 or mat[i][j+1]==2):
+                    count += 1
+                    break
+    return count
+
+def columns(lst):
+    col = []
+    for i in range(len(lst)):
+        temp = []
+        k = 0
+        for _ in range(len(lst)):
+            temp.append(lst[k][i])
+            k = k + 1
+        col.append(temp)
+    return col
+    
+def main():
+    n = int(input('Enter the rows of the matrix:'))
+    mat = []
+    resv = []
+    for i in range(n):
+        print(f'{i+1} th row elements')
+        temp = list(map(int,input().split()))
+        if 1 in temp:
+            mat.append(temp)
+        else:
+            mat.append('noone')
+    rows = cal(mat)
+    temp = columns(mat)
+    colms = cal(temp)
+    resv.extend(mat)
+    if rows+colms > n:
+        print(1)
+    elif 'noone' in resv:
+        print(0)
+    else:
+        print(-1)
+        
+if __name__ == '__main__':
+    main()
+                
+        
