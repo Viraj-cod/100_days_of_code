@@ -1,0 +1,42 @@
+class min_height:
+    def __init__(self,k,arr):
+        self.k = k
+        self.arr = arr
+
+    def max_arr(self):
+        count = len(self.arr)
+        for i in self.arr:
+            temp = 0
+            for j in self.arr:
+                if i >= j:
+                    temp += 1
+            if temp == count:
+                return i
+                
+    def mn_arr(self):
+        for i in self.arr:
+            temp = 0
+            for j in self.arr:
+                if i < j:
+                    temp += 1
+            if temp == len(self.arr) - 1:
+                return i
+                
+    def res(self): #method 1 without built in methods
+        mx = self.max_arr() 
+        mn = self.mn_arr()
+        return (mx - self.k) - (mn + self.k)
+    
+    def shortcut(self): # method 2 with built in methods
+        mx = max(self.arr)
+        mn = min(self.arr)
+        return (mx - self.k) - (mn + self.k)
+        
+def main():
+    k_val = int(input("Enter the value of K:"))
+    array = list(map(int,input("Enter the array elements:").split()))
+    result = min_height(k_val,array)
+    print(result.shortcut())
+
+if __name__ == '__main__':
+    main()
