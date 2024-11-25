@@ -1,0 +1,67 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+def srt(lst):
+    temp = lst.copy()
+    for i in lst:
+        count = 0
+        for j in lst:
+            if i > j:
+                count += 1
+        temp[count] = i
+    return temp
+    
+    
+class linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def add(self,val):
+        new= Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+        
+    def display(self):
+        temp =self.head
+        while temp is not None:
+            print(temp.data,end='->')
+            temp = temp.next
+        print('None')
+        
+    def ll_lst(self):
+        arr = []
+        temp = self.head
+        while temp is not None:
+            arr.append(temp.data)
+            temp = temp.next
+        return arr
+
+def result(a):
+    res = linkedlist()
+    for i in a:
+        res.add(i)
+    return res
+    
+def main():
+    first = list(map(int,input("Enter the elements of first linked list:").split()))
+    second = list(map(int,input("Enter the elements of second linked list:").split()))
+ 
+    lst1 = result(first)
+    lst2 = result(second)
+    mrg = first + second
+    srt_mrg = srt(mrg)
+    res = result(srt_mrg)
+    res.display()
+if __name__ == '__main__':
+    main()
+    
+    
+    
+    
