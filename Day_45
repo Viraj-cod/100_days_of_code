@@ -1,0 +1,53 @@
+class sort:
+    def __init__(self,size):
+        self.arr = [None] * size
+        self.max = size
+        self.top = -1
+        
+    def push(self,val):
+        if self.top == -1:
+            self.top = 0
+            self.arr[self.top] = val
+            return
+        if self.top == self.max - 1:
+            return 'Overloaded'
+        else:
+            self.top = self. top + 1
+            self.arr[self.top] = val
+    
+    def pop(self):
+        if self.top ==  - 1:
+            return 'Underflow'
+        self.top = self.top - 1
+        
+    def display(self):
+        temp = 0
+        while temp != self.max:
+            print(self.arr[temp],end = ' ')
+            temp = temp + 1
+        
+    def srt(self):
+        ele = []
+        temp = 0
+        while temp != self.max:
+            ele.append(self.arr[temp])
+            temp = temp + 1
+        ele.sort(reverse = True)
+        print(*ele)
+        
+def main():
+    try :
+        n = int(input('Enter the size stack:'))
+        stack = sort(n)
+        e = list(map(int,input('Enter the elements of the stack:').split()))
+        for i in e:
+            stack.push(i)
+        #stack.display()
+        print('sorted stack:' ,end = ' ')
+        stack.srt()
+    except:
+        print("Please provide correct inputs!")
+
+if __name__ == '__main__':
+    main()
+    
