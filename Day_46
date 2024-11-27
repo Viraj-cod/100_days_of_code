@@ -1,0 +1,23 @@
+class msng_number:
+    def __init__(self,arr):
+        self.arr = arr
+        
+    def check(self):
+        temp = [i for i in range(1,len(self.arr))]
+        for i in temp:
+            if i not in self.arr:
+                return i
+                break
+
+def main():
+    try:
+        inp = list(map(int,input("Enter the elements of the array:").split()))
+        obj = msng_number(inp)
+        print(obj.check())
+    except:
+        print('Please provide the correct format of input!')
+
+if __name__ == '__main__':
+    main()
+    
+            
