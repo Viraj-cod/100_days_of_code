@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+        
+    def add(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print('Null')
+        
+    def ll_arr(self):
+        temp = self.head
+        arr = []
+        while temp is not None:
+            arr.append(temp.data)
+            temp = temp.next
+        return arr
+
+def srt_uni(arr):
+    empty = []
+    for i in arr:
+        if i not in empty:
+            empty.append(i)
+    shrt = sorted(empty)
+    return shrt
+            
+def main():    
+    ll1  = linkedlist()
+    ll2 = linkedlist()
+    res = linkedlist()
+    ele1 = list(map(int,input("Enter the First LL elements:").split()))
+    ele2 = list(map(int,input("Enter the Second LL elements:").split()))
+    for i in ele1:
+        ll1.add(i)
+    for i in ele2:
+        ll2.add(i)
+    comb = ele1 + ele2
+    res_arr = srt_uni(comb)
+    for i in res_arr:
+        res.add(i)
+    res.display()
+    
+if __name__ == '__main__':
+    main()
