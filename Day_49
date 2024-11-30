@@ -1,0 +1,70 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+def reorder(arr):
+    odd = -1
+    even = 0
+    res = []
+    for i in range(len(arr)):
+        if i % 2 != 0:
+           res.append(arr[odd])
+           odd -= 1
+        else:
+            res.append(arr[even])
+            even += 1
+    return res
+
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def add(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+        
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end ='->')
+            temp = temp.next
+        print('Null')
+    
+    def ll_to_arr(self):
+        temp = self.head
+        arr = []
+        while temp is not None:
+            arr.append(temp.data)
+            temp = temp.next
+        reordered = reorder(arr)
+        return reordered
+
+def main():
+    ll1 = Linkedlist()
+    result = Linkedlist()
+    ele = list(map(int,input("Enter the elements to add in linked list:").split()))
+    for i in ele:
+        ll1.add(i)
+    ll1.display()
+    res = ll1.ll_to_arr()
+    for i in res:
+        result.add(i)
+    result.display()
+
+if __name__ == '__main__':
+    main()
+
+            
+        
+        
+        
+        
+        
+        
