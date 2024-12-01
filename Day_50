@@ -1,0 +1,67 @@
+class node:
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+        
+class Tree:
+    def __init__(self,data):
+        self.root = node(data)
+        self.left_add = 0
+        self.right_add = 0        
+                
+    def insert_left(self,root,val):
+        if root.left is None:
+            root.left = node(val)
+            return
+        new = node(val)
+        new.left = root.left
+        root.left = new
+        
+    def insert_right(self,root,val):
+        if root.right is None:
+            root.right = node(val)
+            return
+        new = node(val)
+        new.right = root.right
+        root.right = new
+        
+    def display(self,root,level = 0):
+        if root:
+            self.display(root.right,level + 1)
+            print(' '*4*level+'->',root.val)
+            self.display(root.left,level + 1)
+        
+    def Left_Tree_sum(self,root):
+        if root:
+            self.Left_Tree_sum(root.left)
+            self.left_add = self.left_add + root.val
+            self.Left_Tree_sum(root.right)
+        return self.left_add
+    
+    def Right_Tree_sum(self,root):
+        if root:
+            self.Right_Tree_sum(root.left)
+            self.right_add = self.right_add + root.val
+            self.Right_Tree_sum(root.right)
+        return self.right_add
+        
+        
+def main():
+    bst = Tree(3)
+    bst.insert_left(bst.root,1)
+    bst.insert_right(bst.root,2)
+    #bst.insert_left(bst.root.left,10)
+    #bst.insert_right(bst.root.left,10)
+    #bst.display(bst.root)
+    left = bst.Left_Tree_sum(bst.root.left)
+    right = bst.Right_Tree_sum(bst.root.right)
+    if left + right == bst.root.val:
+        return True
+    else:
+        return False
+
+if __name__ == '__main__':
+    print(main())
+    
+            
