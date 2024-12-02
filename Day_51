@@ -1,0 +1,13 @@
+def KMP(main,sub):
+    temp = []
+    ln = len(sub)
+    for i in range(len(main)):
+        if main[i:ln] == sub and i <= (len(main) - len(sub)):
+            temp.append(i)
+        ln += 1
+    return temp
+
+if __name__ == '__main__':
+    txt = input('Enter the Main string:')
+    sub = input('Enter the substring:')
+    print(KMP(txt,sub))
