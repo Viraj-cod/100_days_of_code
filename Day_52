@@ -1,0 +1,28 @@
+def sub(srt):
+    res = []
+    for i in srt:
+        for j in srt:
+            temp = i+j
+            res.append(temp)
+    return res
+    
+class palindrome_add:
+    def __init__(self,inp):
+        self.inp = inp
+        self.result = 0
+        
+    def check(self):
+        substrings = sub(self.inp)
+        for i in substrings:
+            temp = i + self.inp
+            if temp == temp[::-1]:
+                self.result = self.result + len(i)
+                return self.result
+                
+def main():
+    ele = input('Enter the string:')
+    obj = palindrome_add(ele)
+    print(obj.check())
+    
+if __name__ == '__main__':
+    main()
