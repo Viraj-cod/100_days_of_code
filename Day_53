@@ -1,0 +1,27 @@
+def string_rotation(srt1,srt2):
+    temp = 0
+    till = 0
+    if len(srt1) % 2 != 0:
+        for i in range(len(srt1)+int(len(srt1)/2)+1):
+            if srt2[temp] == srt1[till]:
+                till = till+1
+            temp = temp + 1
+            if i == len(srt1) - 1:
+                temp = 0
+        return till == len(srt1)
+    if len(srt1) % 2 == 0:
+        for i in range(len(srt1)+int(len(srt1)/2)):
+            if srt2[temp] == srt1[till]:
+                till = till+1
+            temp = temp + 1
+            if i == len(srt1) - 1:
+                temp = 0
+        return till == len(srt1)
+        
+def main():
+    inp1 = input('Enter the origional string:')
+    inp2 = input('Enter the rotated string:')
+    print(string_rotation(inp1,inp2))
+    
+if __name__ == '__main__':
+    main()
