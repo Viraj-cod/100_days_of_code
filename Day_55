@@ -1,0 +1,98 @@
+#################reversing a linked list#########################
+
+class Node:
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class Linked_list:
+    def __init__(self):
+        self.head = None
+    
+    def add(self,data):
+        new = Node(data)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.val,end ='->')
+            temp = temp.next
+        print('null')
+        
+    def reverse(self):
+        prev = None
+        temp = self.head
+        while temp:
+            next_node = temp.next
+            temp.next = prev
+            prev = temp
+            temp = next_node
+        while prev is not None:
+            print(prev.val,end='->')
+            prev = prev.next
+        print('null')
+        
+if __name__ == '__main__':
+    ele = list(map(int,input("Enter the elements to add in the linked list:").split()))
+    l1 = Linked_list()
+    for i in ele:
+        l1.add(i)
+    l1.display()
+    l1.reverse()
+#########################################################################
+
+############################subarray sum#################################
+class index_sum:
+    def __init__(self,arr,trg):
+        self.arr = arr
+        self.trg = trg
+        
+    def result(self):
+        for i in range(len(self.arr)):
+            for j in range(len(self.arr)):
+                if sum(self.arr[i:j]) == self.trg:
+                    return [i+1,j]
+        else:
+            return [-1]
+def main():
+    inp = list(map(int,input("Enter the array elements:").split()))
+    target = int(input("Enter the target:"))
+    res = index_sum(inp,target)
+    print(res.result())
+
+if __name__ == '__main__':
+    main()
+######################################################################
+##################################H_Index#############################
+def srt(arr):
+    temp = arr.copy()
+    for i in arr:
+        count = 0 
+        for j in arr:
+            if i < j:
+                count += 1
+        temp[count] = 1
+    return temp
+
+def h_index(arr):
+    h_sort = srt(arr) #5,4,2,1,1
+    count = 0
+    for i in range(len(h_sort)):
+        if i <= h_sort[i]:
+            count += 1
+        else:
+            return count
+def main():
+    arr = list(map(int,input('Enter the array:').split()))
+    print(h_index(arr))
+
+if __name__ == '__main__':
+    main()
+###################################################################
