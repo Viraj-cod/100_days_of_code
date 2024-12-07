@@ -1,0 +1,28 @@
+def move(arr):
+    temp = arr.copy()
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            temp[i] = arr[i+1]
+            temp[i+1] = arr[i]
+            break
+    return temp
+
+def inversion(arr):
+    count = 0
+    if arr == sorted(arr):
+        return 0
+    else:
+        org = sorted(arr)
+        temp = []
+        while org != temp:
+            temp = move(arr)
+            count += 1
+            arr = temp
+        return count
+
+def main():
+    inp = list(map(int,input("Enter the array elements:").split()))
+    print(inversion(inp))
+
+if __name__ == '__main__':
+    main()
