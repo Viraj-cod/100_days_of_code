@@ -1,0 +1,59 @@
+def mn_mx(arr):
+    less = arr[0][0]
+    mx = arr[0][0]
+    for i in arr:
+        for j in i:
+            if j < less:
+                less = j
+            elif j > mx:
+                mx = j
+    return [less,mx]
+
+class solution:
+    def __init__(self,arr):
+        self.arr = arr
+        
+    def cal(self):
+        temp = self.arr.copy()
+        for i in self.arr: #[[1,3],[2,4],[6,8],[9,10]]
+            for k in self.arr:
+                if k[0] in range(i[0],i[1]) and k != i:
+                    if k in temp:
+                        temp.remove(k)
+                elif k[1] in range(i[0],i[1]) and k != i:
+                    if k in temp:
+                        temp.remove(k)
+        return temp
+    
+    def cals(self):
+        res = []
+        for i in self.arr: #[[1,3],[2,4],[6,8],[9,10]]
+            for k in self.arr:
+                if k[0] in range(i[0],i[1]) and k != i:
+                    res.append(i)
+                    break
+                elif k[1] in range(i[0],i[1]) and k != i:
+                    res.append(i)
+                    break
+        return res
+        
+def main():
+    arr = []
+    print('Enter -1 to exit')
+    print('Enter elements row wise')
+    while 1:
+        k = list(map(int,input().split()))
+        if k == [-1]:
+            break
+        arr.append(k)
+    obj = solution(arr)
+    pure = obj.cal()
+    mixed = obj.cals()
+    res = mn_mx(mixed)
+    result = []
+    if res not in pure:
+        pure.insert(0,res)
+    print(pure)
+   
+if __name__ == '__main__':
+    main()
