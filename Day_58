@@ -1,0 +1,47 @@
+class solution:
+    def __init__(self,arr,interval):
+        self.arr = arr
+        self.interval = interval
+        self.but = True
+        
+    def res(self):
+        ini = 0
+        end = 0
+        idx = 0
+        for i in self.arr:
+            if self.interval[0] in range(i[0],i[1]+1) and self.but == True:
+                ini = idx
+                self.but = False
+                idx = idx + 1
+            elif self.interval[1] in range(i[0],i[1]+1) and self.but == False:
+                end = idx
+                self.but = None
+                idx = idx + 1
+            else:
+                idx = idx + 1
+        return self.arr[ini:end+1]
+        
+    def result(self):
+        rem = self.res()
+        new=[]
+        for i in self.arr:
+            if i not in rem:
+                new.append(i)
+        new.append([rem[0][0],rem[-1][1]])
+        return sorted(new)
+
+def main():
+    print('Press -1 to exit')
+    print('Enter the intervals')
+    inter = []
+    while 1:
+        temp = list(map(int,input().split()))
+        if temp == [-1]:
+            break
+        inter.append(temp)
+    new = list(map(int,input("Enter the new interval:").split()))
+    obj = solution(inter,new)
+    print(obj.result())
+        
+if __name__ == '__main__':
+    main()
