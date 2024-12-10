@@ -1,0 +1,53 @@
+def solo(arr):
+    temp = []
+    for i in arr:
+        if i not in temp:
+            temp.append(i)
+    return len(temp)
+
+class non_over:
+    def __init__(self,arr):
+        self.arr = arr
+    
+    def cal(self):
+        cont = []
+        if solo(self.arr) != 1:
+            for i in self.arr:
+                for j in self.arr:
+                    if i != j and i[0] in range(j[0]+1,j[1]):
+                        if j not in cont:
+                            cont.append(j)
+                    elif i != j and i[1] in range(j[0]+1,j[1]):
+                        if j not in cont:
+                            cont.append(j)
+            return len(cont),cont
+        
+        elif solo(self.arr) == 1:
+            print('hello')
+            for i in self.arr:
+                for j in self.arr:
+                    if i[0] in range(j[0],j[1]):
+                        cont.append(j)
+                        break
+                    elif i[1] in range(j[0],j[1]):
+                        cont.append(j)
+                        break
+            
+            return len(cont) - 1,cont
+
+def main():
+    ele = []
+    print('Enter -1 to exit')
+    print('Enter the elements')
+    while 1:
+        temp = list(map(int,input().split()))
+        if temp == [-1]:
+            break
+        ele.append(temp)
+    obj = non_over(ele)
+    print(obj.cal())
+
+if __name__ == '__main__':
+    main()
+    
+    
