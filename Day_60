@@ -1,0 +1,33 @@
+def sort(arr):
+    temp = arr.copy()
+    for i in arr:
+        count = 0
+        for j in arr:
+            if i > j:
+                count = count + 1
+        temp[count] = i
+    return temp
+
+class solution:
+    def __init__(self,arr1,arr2):
+        self.arr1 = arr1
+        self.arr2 = arr2
+        
+    def cal(self):
+        ind1 = len(self.arr1)
+        ind2 = len(self.arr2)
+        res = sort(self.arr1+self.arr2)
+        return res[:ind1],res[ind1:]
+    
+def main():
+    ele1 = list(map(int,input("Enter the elements of the first array:").split()))
+    ele2 = list(map(int,input("Enter the elements of the second array:").split()))
+    obj = solution(ele1,ele2)
+    res1,res2 = obj.cal()
+    print(*res1)
+    print(*res2)
+    
+if __name__ == '__main__':
+    main()
+        
+        
