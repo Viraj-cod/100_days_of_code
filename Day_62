@@ -1,0 +1,53 @@
+class Node:
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,data):
+        new = Node(data)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.val,end = '->')
+            temp = temp.next
+        print('null')
+
+def count(l1,l2,x):
+    first = l1.head
+    second = l2.head
+    count = 0
+    while first is not None:
+        second = l2.head
+        while second is not None:
+            if first.val + second.val == x:
+                count += 1
+            second = second.next
+        first = first.next
+    return count
+    
+def main():
+    ll1 = Linkedlist()
+    ll2 = Linkedlist()
+    ele1 = list(map(int,input("Enter the elements of first linked list:").split()))
+    ele2 = list(map(int,input("Enter the elements of Second linked list:").split()))
+    x = int(input("Enter the value of the x:"))
+    for i in ele1:
+        ll1.insert(i)
+    for j in ele2:
+        ll2.insert(j)
+    print(count(ll1,ll2,x))
+    
+if __name__ == '__main__':
+    main()
