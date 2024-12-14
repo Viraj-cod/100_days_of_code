@@ -1,0 +1,63 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+        
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+       
+    def rem_last(self):
+        slow = self.head
+        fast = self.head.next
+        if self.head is None:
+            return None
+        if fast is None:
+            return self.head
+        while fast.next is not None:
+            slow = slow.next
+            fast = fast.next
+        slow.next = None
+        
+
+def rev(ll):
+    temp = ll.head
+    if temp is None:
+        return None
+    while temp.next is not None:
+        temp = temp.next
+    return temp
+    
+def main():
+    l1 = Linkedlist()
+    res = Linkedlist()
+    ele1 = list(map(int,input("Enter the elements of the first Linkedlist:").split()))
+    for i in ele1:
+        l1.insert(i)
+    l1.display()
+    for i in ele1:
+        temp = rev(l1)
+        l1.rem_last()
+        if temp:
+            res.insert(temp.data)
+    res.display()
+    
+if __name__ == '__main__':
+    main()
