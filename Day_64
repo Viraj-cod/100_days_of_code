@@ -1,0 +1,50 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+    
+    def rotate(self,num):
+        while num:
+            temp = self.head
+            new = Node(temp.data)
+            while temp.next is not None:
+                temp = temp.next
+            temp.next = new
+            num = num - 1
+            self.head = self.head.next
+        self.display()
+
+def main():
+    ele = list(map(int,input("Enter the list elements:").split()))
+    ll = Linkedlist()
+    for i in ele:
+        ll.insert(i)
+    x = int(input('Enter the number of rataions:'))
+    ll.display()
+    ll.rotate(x)
+    
+if __name__ == '__main__':
+    main()
+        
+            
