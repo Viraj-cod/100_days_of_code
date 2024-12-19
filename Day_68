@@ -1,0 +1,30 @@
+class solution:
+    def __init__(self,arr):
+        self.arr = arr
+    
+    def cal(self):
+        res = []
+        for i in range(len(self.arr)):
+            if i == 0:
+                res.append(1)
+            elif self.arr[i-1] > self.arr[i]:
+                res.append(1)
+            elif self.arr[i-1] < self.arr[i]:
+                temp = self.arr[:i]
+                temp = temp[::-1]
+                count = 1
+                for j in temp:
+                    if self.arr[i] >= j:
+                        count += 1
+                    elif self.arr[i] < j:
+                        break
+                res.append(count)
+        return res
+                
+def main():
+    inp = list(map(int,input("Enter the array elements:").split()))
+    obj = solution(inp)
+    print(obj.cal())
+    
+if __name__ == '__main__':
+    main()
