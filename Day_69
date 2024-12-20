@@ -1,0 +1,56 @@
+class spiral:
+    def spiral_trv(self,mat):
+        res = []
+        if len(mat) == 4:
+            temp1 = False
+            for i in range(len(mat)):
+                if i == 0:
+                    for j in mat[i]:
+                        res.append(j)
+                if temp1 == False:
+                    for k in range(1,len(mat)):
+                        res.append(mat[k][-1])
+                    temp1 = True
+                    op = mat[-1][-1]
+                    for m in mat[-1][::-1]:
+                        if m != op:
+                            res.append(m)
+                    jtp = 0        
+                    for n in mat[::-1]:
+                        if jtp != 0 and jtp != len(mat)-1:
+                            res.append(n[0])
+                        jtp += 1
+                else:
+                    if i != 0 and i < len(mat) - 2:
+                        for p in range(len(mat[i])):
+                            if p == 0 or p == len(mat[i]) - 1:
+                                continue
+                            else:
+                                res.append(mat[i][p])
+                        #break
+                    if i == len(mat) - 2:
+                        tp = len(mat[i]) - 1
+                        for p in range(len(mat[i])):
+                            if p == 0 or p == len(mat[i]) - 1:
+                                tp -= 1
+                                continue
+                            else:
+                                res.append(mat[i][tp])
+                                tp -= 1
+        return res    
+
+def main():
+    mat = []
+    print('Enter the arrays:')
+    print('print -1 to exit')
+    while True:
+        temp = list(map(int,input().split()))
+        if temp == [-1]:
+            break
+        mat.append(temp)
+    obj = spiral()
+    print(obj.spiral_trv(mat))
+    
+if __name__ == '__main__':
+    main()
+        
