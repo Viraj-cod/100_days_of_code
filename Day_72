@@ -1,0 +1,73 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+    
+class Linked_list:
+    def __init__(self):
+        self.head = None
+        
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end='->')
+            temp = temp.next
+        print(None)
+
+    def count(self):
+        add = 0
+        temp = self.head
+        while temp is not None:
+            add += 1
+            temp = temp.next
+        return add
+        
+        
+def remove_front(ll1):
+    if ll1.head is None:
+        return None
+    ll1.head = ll1.head.next
+    return ll1
+    
+def merge(ll1,ll2):
+    temp1 = ll1.head
+    num = ll1.count()
+    temp2 = ll2.head
+    while num != 0:
+        new = Node(temp2.data)
+        new.next = temp1.next
+        temp1.next = new
+        temp2 = temp2.next
+        new_ll2 = remove_front(ll2)
+        temp1 = temp1.next.next
+        num -= 1
+    ll1.display()
+    new_ll2.display()
+        
+    
+    
+def main():
+    l1 = list(map(int,input("Enter the first linked elements:").split()))
+    l2 = list(map(int,input("Enter the second linked elements:").split()))
+    ll1 = Linked_list()
+    ll2 = Linked_list()
+    for i in l1:
+        ll1.insert(i)
+    for j in l2:
+        ll2.insert(j)
+    ll1.display()
+    ll2.display()
+    merge(ll1,ll2)
+
+if __name__ == '__main__':
+    main()
