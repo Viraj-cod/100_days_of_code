@@ -1,0 +1,63 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+    
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new= Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end='->')
+            temp = temp.next
+        print(None)
+    
+    def count(self):
+        num = 0
+        temp = self.head
+        while temp is not None:
+            num += 1
+            temp = temp.next
+        return num
+        
+    def Delete_mid(self):
+        num = self.count()
+        
+        mid = int(num/2)
+        slow = self.head
+        fast = self.head.next
+        stp = 1
+        while stp != mid:
+            slow = slow.next
+            fast = fast.next
+            stp += 1
+        slow.next = fast.next
+        self.display()
+    
+def main():
+    inp = list(map(int,input("Enter elements of linked list:").split()))
+    ll = Linkedlist()
+    for i in inp:
+        ll.insert(i)
+    ll.display()
+    ll.Delete_mid()
+
+if __name__ == '__main__':
+    main()
+            
+            
+            
+            
+            
