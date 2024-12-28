@@ -1,0 +1,109 @@
+def cal(ll,ll2):
+    num = ll.count()
+    half = int(num/2)
+    add = 0
+    temp2 = ll2.head
+    while add != half:
+        temp = ll.head
+        in_end = num - (add)
+        while in_end != 1:
+            temp = temp.next
+            in_end -= 1
+        temp2.data = temp.data - temp2.data
+        temp2 = temp2.next
+        add += 1
+    ll2.display()
+
+def trav(ll,node,start):
+    temp = ll.head
+    num = ll.count()
+    end = num - start
+    add = 1
+    butn = True
+    while temp is not None:
+        if butn == True:
+            in_end = num - (num - start)
+            go_on = 0
+            temp_in = ll.head
+            while go_on != in_end:
+                go_on += 1
+                temp_in = temp_in.next
+            ndata = node.data
+            butn = False
+                
+        if end == add:
+            temp.data = node.data
+            break
+        temp = temp.next
+        add = add + 1
+    return ll
+
+def res(ll):
+    n = ll.count()
+    half = int(n / 2)
+    temp = ll.head
+    edtd = 0
+    if n % 2 == 0:
+        num = 0
+        while num != half:
+            edtd = trav(ll,temp,num)
+            num += 1
+            temp = temp.next
+        return edtd
+
+    elif n % 2 != 0:
+        half = half + 1
+        num = 0
+        while num != half:
+            edtd = trav(ll,temp,num)
+            num += 1
+            temp = temp.next
+        return edtd
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+    
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+    
+    def count(self):
+        num = 0
+        temp = self.head
+        while temp is not None:
+            num += 1
+            temp = temp.next
+        return num
+
+def main():
+    ele = list(map(int,input("Enter the Linkedlist elements:").split()))
+    ll = Linkedlist()
+    ll2 = Linkedlist()
+    for i in ele:
+        ll.insert(i)
+    for j in ele:
+        ll2.insert(j)
+    #ll.display()
+    cal(ll2,res(ll))
+    
+if __name__ == '__main__':
+    main()
