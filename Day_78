@@ -1,0 +1,69 @@
+def sort(ll,val,num):
+    temp = ll.head
+    count = 0
+    while temp is not None and count != num:
+        temp = temp.next
+        count += 1
+    temp.data = val
+    return ll
+    
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+    
+    def ordering(self,ll):
+        temp = self.head
+        exist = []
+        while temp is not None:
+            if temp.data not in exist:
+                count = 0
+            else:
+                count = 1
+            temp2 = self.head
+            while temp2 is not None:
+                if temp.data not in exist:
+                    exist.append(temp.data)
+                if temp.data > temp2.data:
+                    count += 1
+                temp2 = temp2.next
+            res = sort(ll,temp.data,count)
+            temp = temp.next
+        res.display()
+                
+                    
+
+def main():
+    ele = list(map(int,input("Enter the elements in Linkedlist:").split()))
+    
+    ll = Linkedlist()
+    ll2 = Linkedlist()
+    for i in ele:
+        ll.insert(i)
+        ll2.insert(i)
+    ll.display()
+    ll.ordering(ll2)
+    
+if __name__ == '__main__':
+    main()
