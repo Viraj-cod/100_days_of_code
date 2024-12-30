@@ -1,0 +1,39 @@
+def mx(ele):
+    temp = {}
+    ip = len(ele[0])
+    big = 0
+    for i in ele:
+        if len(i) > ip:
+            big = len(i)
+            ip = len(i)
+        temp[i] = len(i)
+    return temp,big
+
+def check(dikt,ele2,mx):
+    for i,j in dikt.items():
+        if i in ele2 and j >= mx:
+            return j
+
+def sub(ele1,ele2):
+    res = []
+    for i in range(len(ele1)+1):
+        for j in range(len(ele1)+1):
+            ele = ele1[i:j]
+            if ele != [] and ele not in res:
+                res.append(ele)
+    lnths,ori = mx(res)
+    for i in range(len(lnths)):
+        ko = check(lnths,ele2,(ori-i))
+        if ko:
+            return ko
+
+def main():
+    srt1 = input('Enter the first string:')
+    srt2 = input('Enter the second string:')
+    if sub(srt1,srt2):
+        print(sub(srt1,srt2))
+    else:
+        print(0)
+    
+if __name__ == '__main__':
+    main()
