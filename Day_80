@@ -1,0 +1,30 @@
+class Long_cons:
+    def check(self,arr):
+        new = []
+        pos = []
+        for i in arr:
+            res = 0
+            temp = i
+            j = []
+            for _ in arr:
+                if temp in arr:
+                    j.append(temp)
+                    res += 1
+                    temp = temp + 1
+                else:
+                    break
+            pos.append(res)
+            new.append(j)
+        print(max(pos))
+
+def main():
+    try:
+        inp = list(map(int,input("Enter the array elements:").split()))
+        obj = Long_cons()
+        obj.check(inp)
+    except:
+        print('Please provide right input')
+        main()
+
+if __name__ == '__main__':
+    main()
