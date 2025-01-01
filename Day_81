@@ -1,0 +1,98 @@
+def sep(ll,num):
+    count = 1
+    temp = ll.head
+    while count != num and temp is not None:
+        temp = temp.next
+        count = count + 1
+    temp.next = None
+    return ll
+
+
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+    
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = Node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+    
+    def values(self):
+        temp = self.head
+        count = 0
+        while temp is not None:
+            temp = temp.next
+            count += 1
+        return count
+    
+def sep2(ll,num):
+    count = 1
+    temp = ll.head
+    new_ob = Linkedlist()
+    while temp is not None:
+        if count > num:
+            new_ob.insert(temp.data)
+        temp = temp.next
+        count = count + 1
+    return new_ob
+
+def rev(ll,ele,n):
+    new_ob = Linkedlist()
+    for i in range(n):
+        new_ob.insert(i)
+    temp = ll.head
+    total = ll.values() 
+    while temp is not None:
+        temp2 = new_ob.head
+        count = 1
+        while count < total and temp2.next is not None:
+            count += 1
+            temp2 = temp2.next
+        temp2.data = temp.data 
+        total -= 1
+        temp = temp.next
+    return new_ob
+
+def merge(ll1,ll2):
+    temp = ll1.head
+    while temp.next is not None:
+        temp = temp.next
+    temp.next = ll2.head
+    ll1.display()
+    
+def main():
+    obj = Linkedlist()
+    e = list(map(int,input("Enter the elements of linked list:").split()))
+    n = int(input("Enter the value of k:"))
+    for i in e:
+        obj.insert(i)
+    a = sep2(obj,n)
+    b = sep(obj,n)
+    #obj.display()
+    b1 = rev(a,e,n)
+    a1 = rev(b,e,n)
+    merge(a1,b1)
+    #sep(obj,n)
+    
+if __name__ == '__main__':
+    main()
+    
+
+    
