@@ -1,0 +1,20 @@
+def sub_k(arr,num):
+    count = 0
+    for i in range(len(arr)+1):
+        for j in range(len(arr)+1):
+            if sum(arr[i:j]) == num and arr[i:j] != []:
+                count += 1
+    return count
+
+def main():
+    try:
+        ele = list(map(int,input("Enter array elements:").split()))
+        num = int(input("Enter the target number:"))
+        print(sub_k(ele,num))
+    except:
+        print('Enter correct input')
+        main()
+        
+if __name__ == '__main__':
+    main()
+        
