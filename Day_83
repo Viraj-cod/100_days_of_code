@@ -1,0 +1,37 @@
+class xor:
+    def _sub(self,arr):
+        emp = []
+        for i in range(len(arr)+1):
+            for j in range(len(arr)+1):
+                temp = arr[i:j]
+                if temp != []:
+                    emp.append(temp)
+        return emp
+    
+    def _check(self,ele,n):
+        temp = ele[0]
+        for i in range(1,len(ele)):
+            temp = temp ^ ele[i]
+        if temp == n:
+            return True
+        else:
+            return False
+        
+    def res(self,arr,n):
+        elem = self._sub(arr)
+        #print(elem)
+        out = 0
+        for i in elem:
+            if self._check(i,n):
+                out += 1
+        return out
+            
+def main():
+    ele = list(map(int,input("Enter the array elements:").split()))
+    out = int(input("Enter the k value:"))
+    obj = xor()
+    print('output:',obj.res(ele,out))
+    
+if __name__ == '__main__':
+    main()
+
