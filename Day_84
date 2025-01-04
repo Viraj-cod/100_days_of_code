@@ -1,0 +1,38 @@
+class stack:
+    def __init__(self):
+        self.arr = []
+    
+    def push(self,val):
+        self.arr.append(val)
+        
+    def pop(self):
+        temp = self.arr.pop()
+        return temp
+        
+    def display(self):
+        print(self.arr)
+    
+    def getmin(self):
+        return min(self.arr)
+
+def main():
+    Q = int(input("Enter the number of queries:"))
+    print("Enter the operations")
+    res = ''
+    st = stack()
+    for i in range(Q):
+        ele = tuple(map(int,input().split()))
+        if ele[0] == 1:
+            st.push(ele[1])
+        elif ele[0] == 2:
+            k = st.pop()
+            res = res + str(k) + ' ' 
+        elif ele[0] == 3:
+            temp = st.getmin()
+            res = res + str(temp) + ' ' 
+        elif ele[0] == 4:
+            st.display()
+    print(res)
+    
+if __name__ == '__main__':
+    main()
