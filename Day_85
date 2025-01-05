@@ -1,0 +1,60 @@
+def pos_uni(arr):
+    temp = [i for i in arr if i >=0]
+    ele = []
+    for i in temp:
+        if i not in ele:
+            ele.append(i)
+    return ele
+
+def srt(ele):
+    arr = pos_uni(ele)
+    temp = arr.copy()
+    for i in range(len(arr)):
+        count = 0
+        for j in range(len(arr)):
+            if arr[i] > arr[j]:
+                count += 1
+        temp[count] = arr[i]
+    return temp
+    
+def mn(arr):
+    temp = arr[0]
+    for i in arr:
+        if i < temp:
+            temp = i
+    return temp
+
+def mx(arr):
+    temp = arr[0]
+    for i in arr:
+        if i > temp:
+            temp = i
+    return temp
+
+def small_miss(ele):
+    arr = srt(ele)
+    min_ele = mn(arr)
+    max_ele = mx(arr)
+    temp = []
+    #print(arr)
+    for i in range(min_ele,max_ele+1):
+        temp.append(i)
+    #print(temp)
+    for j in range(len(temp)):
+        if arr[j] != temp[j]:
+            return temp[j]
+            
+def main():
+    try:
+        arr = list(map(int,input("Enter the array elements:").split()))
+        if small_miss(arr) == None:
+            print(1)
+        else:
+            print(small_miss(arr))
+    except:
+        print('Enter correct input!')
+        main()
+        
+if __name__ == '__main__':
+    main()
+    
