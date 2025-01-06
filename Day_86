@@ -1,0 +1,33 @@
+def mx(arr):
+    op = arr[0]
+    for i in arr:
+        if op < i:
+            op = i
+    return op
+
+class sub_k:
+    def res(self,ele,n):
+        res = []
+        k = n
+        for i in range(len(ele)-n):
+            temp = ele[i:k]
+            val = mx(temp)
+            res.append(val)
+            k += 1
+        temp = ele[len(ele)-n:]
+        val = mx(temp)
+        res.append(val)
+        return res
+            
+def main():
+    try:
+        arr = list(map(int,input("Enter the elements of the array:").split()))
+        k = int(input("Enter the value of k:"))
+        obj = sub_k()
+        print(obj.res(arr,k))
+    except:
+        print('Enter correct input!')
+        main()
+
+if __name__ == '__main__':
+    main()
