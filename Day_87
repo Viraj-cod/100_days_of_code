@@ -1,0 +1,18 @@
+def sum_insort(arr,k):
+    count = 0
+    temp = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if arr[i] + arr[j] == k and i != j:
+                count += 1
+                temp.append([i,j])
+    return int(count/2)
+
+def main():
+    ele = list(map(int,input("Enter the array elements:").split()))
+    op = int(input("Enter the targeted value:"))
+    print(sum_insort(ele,op))
+    
+if __name__ == '__main__':
+    main()
+    
