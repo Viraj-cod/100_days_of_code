@@ -1,0 +1,22 @@
+def add(arr):
+    count = 0
+    for i in arr:
+        count += i
+    return count
+    
+class sub:
+    def res(self,ele,n):
+        for i in range(len(ele)):
+            for j in range(i,len(ele)):
+                if add(ele[i:j]) == n:
+                    return [i+1,j]
+        return [-1]
+        
+def main():
+    arr = list(map(int,input("Enter the numbers of the array:").split()))
+    tg = int(input("Enter the target value:"))
+    obj = sub()
+    print(obj.res(arr,tg))
+
+if __name__ == '__main__':
+    main()
