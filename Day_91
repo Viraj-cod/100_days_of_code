@@ -1,0 +1,41 @@
+def sub(arr,n):
+    ret = []
+    for i in arr:
+        ml = 1
+        for j in arr:
+            if i*ml:
+                for k in arr:
+                    if i*ml+k == n:
+                        temp = [i]*ml
+                        temp.append(k)
+                        if sorted(temp) not in ret:
+                            ret.append(temp)
+            if i* ml + j*ml:
+                for k in arr:
+                    if i*ml+k == n:
+                        temp = [i]*ml
+                        temp.append(k)
+                        if sorted(temp) not in ret:    
+                            ret.append(temp)
+                    if i*ml + k*ml == n:
+                        temp = [i]*ml
+                        temp2 = [k]*ml
+                        if sorted(temp+temp2) not in ret:
+                            ret.append(temp+temp2)
+                    if i + j + k == n:
+                        val = [i,j,k]
+                        #print(sorted(temp))
+                        if sorted(val) not in ret:
+                            ret.append(sorted(val))
+            ml += 1
+    return ret,len(ret)
+
+def main():
+    arr = list(map(int,input("Enter the array elements:").split()))
+    trg = int(input("Enter the sum value:"))
+    res_list,res = sub(arr,trg)
+    print(res_list)
+    print(res)
+    
+if __name__ == '__main__':
+    main()
