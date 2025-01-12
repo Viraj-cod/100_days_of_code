@@ -1,0 +1,62 @@
+def check(ll1,ll2,num):
+    res = 0
+    temp = ll1.head
+    while temp is not None:
+        temp2 = ll2.head
+        while temp2 is not None:
+            if temp.data + temp2.data == num:
+                res += 1
+            temp2 = temp2.next
+        temp = temp.next
+    return res
+    
+class node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class Linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end='->')
+            temp = temp.next
+        print(None)
+    
+    def count(self):
+        add = 1
+        temp = self.head
+        while temp is not None:
+            add += 1
+            temp = temp.next
+        return add
+
+def main():
+    lst1 = list(map(int,input("Enter the first ll elements:").split()))
+    lst2 = list(map(int,input("Enter the second ll elements:").split()))
+    num = int(input("Enter the targeted number:"))
+    ll1 = Linkedlist()
+    ll2 = Linkedlist()
+    for i in lst1:
+        ll1.insert(i)
+    for j in lst2:
+        ll2.insert(j)
+    print(check(ll1,ll2,num))
+
+if __name__ == '__main__':
+    main()
+        
+        
