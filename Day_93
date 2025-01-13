@@ -1,0 +1,25 @@
+def mn(arr):
+    temp = arr[0]
+    for i in arr:
+        if i > temp:
+            temp = i
+    return temp
+
+class again:
+    def sol(self,arr):
+        res = []
+        for i in range(len(arr)):
+            for j in range(len(arr)):
+                if i != j:
+                    temp = arr[i] + arr[j]
+                    res.append(temp)
+        return mn(res)
+            
+def main():
+    arr = list(map(int,input("Enter the integers:").split()))
+    obj = again()
+    print(obj.sol(arr))
+
+if __name__ == '__main__':
+    main()
+
