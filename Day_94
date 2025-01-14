@@ -1,0 +1,20 @@
+class dixe_throw:
+    def sol(self,arr,num,trg):
+        res = []
+        for i in arr:
+            for j in arr:
+                for k in arr:
+                    if i+j+k == trg:
+                        res.append([i,j,k])
+        return len(res)
+
+def main():
+    m = int(input("Enter the sides:"))
+    n = int(input("Enter the no. of dice:"))
+    x = int(input("Enter the targeted value:"))
+    arr = [i for i in range(1,m+1)]
+    obj = dixe_throw()
+    print(obj.sol(arr,n,x))
+
+if __name__ == '__main__':
+    main()
