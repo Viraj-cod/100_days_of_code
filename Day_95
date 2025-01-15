@@ -1,0 +1,34 @@
+def add(arr):
+    temp = 0
+    for i in arr:
+        temp = temp + i
+    return temp
+
+def ln_check(arr):
+    check = []
+    res = 0
+    for i in arr:
+        temp = 0
+        for j in i:
+            temp += 1
+        check.append(temp)
+    for k in check:
+        if res < k:
+            res = k
+    return res
+    
+def check(arr,x):
+    res = []
+    for i in range(len(arr)):
+        for j in range(i,len(arr)+1):
+            if add(arr[i:j]) == x:
+                res.append(arr[i:j])
+    return ln_check(res)
+
+def main():
+    inp = list(map(int,input("Enter the array elements:").split()))
+    k = int(input("enter the targetted value:"))
+    print(check(inp,k))
+
+if __name__ == '__main__':
+    main()
