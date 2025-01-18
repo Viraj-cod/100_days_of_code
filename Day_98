@@ -1,0 +1,34 @@
+def ind(arr):
+    temp = 0
+    for i in arr:
+        if i > temp:
+            temp = i
+    return temp
+
+class platforms:
+    def __init__(self,arr,dep):
+        self.arr = arr
+        self.dep = dep
+    
+    def check(self):
+        temp_arr = []
+        for i in range(len(self.arr)):
+            temp = 0
+            for j in range(len(self.arr)):
+                if self.arr[j] in range(self.arr[i],self.dep[i]):
+                    temp += 1
+            temp_arr.append(temp)    
+        return ind(temp_arr)
+
+def main():
+    try:
+        arr = list(map(int,input("Enter the arrival times of the trains:").split()))
+        dep = list(map(int,input("Enter the departure times of the trains:").split()))
+        res = platforms(arr,dep)
+        print(res.check())
+    except:
+        print('Please enter valid arrival and departure time!')
+        main()
+
+if __name__ == '__main__':
+    main()
