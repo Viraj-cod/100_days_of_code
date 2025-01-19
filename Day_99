@@ -1,0 +1,30 @@
+def rev(ele):
+    temp = ''
+    ln = len(ele) - 1
+    while ln >= 0:
+        temp = temp + ele[ln]
+        ln = ln - 1
+    return temp
+#reverse function is user defined made by me instaed of using buit in 
+
+class solution:
+    def longest_pal(self,inp):
+        res = ''
+        for i in range(len(inp)):
+            for j in range(i,len(inp)+1):
+                if inp[i:j] == rev(inp[i:j]) and len(res) < len(inp[i:j]):
+                    res = ''
+                    res = res + inp[i:j]
+        return res
+
+def main():
+    try:
+        word = input('Enter a string:')
+        obj = solution()
+        print(obj.longest_pal(word))
+    except:
+        print('Please enter the correct input!')
+        main()
+    
+if __name__ == '__main__':
+    main()
