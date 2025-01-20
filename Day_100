@@ -1,0 +1,40 @@
+def uni(arr):
+    res = []
+    for i in arr:
+        if sorted(i) not in res:
+            res.append(sorted(i))
+    return res
+    
+def sub(org,arr,num):
+    temp = []
+    for i in range(len(arr)):
+        pro = arr[:i+1]
+        for j in range(len(org)):
+            if sum(pro) + org[j] == num and org[j] not in pro:
+                pro.append(org[j])
+                temp.append(pro)
+    return temp
+    
+class solution:
+    def perfect_sum(self,arr,x):
+        res = []
+        if x == 0:
+            return 1
+        for i in range(len(arr)):
+            temp = sub(arr,arr[i:],x)
+            if temp:
+                res.extend(temp)
+            if arr[i] == x:
+                res.append([arr[i]])
+        #print(res)
+        return len(uni(res))
+            
+def main():
+    inp = list(map(int,input("Enter the array elements:").split()))
+    trg = int(input("Enter the target value:"))
+    res = solution()
+    print(res.perfect_sum(inp,trg))
+    #print(sub(inp,trg))
+
+if __name__ == '__main__':
+    main()
