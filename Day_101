@@ -1,0 +1,61 @@
+class node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end = '->')
+            temp = temp.next
+        print(None)
+    
+    def rem_dup(self):
+        temp = self.head
+        while temp is not None:
+            temp_slow = self.head
+            temp_fast = self.head.next
+            count = 0
+            while temp_fast is not None:
+                if temp_fast.data == temp.data:
+                    count += 1
+                if count > 1:
+                    temp_slow.next = temp_fast.next
+                    temp_fast = None
+                    break
+                temp_slow = temp_slow.next
+                temp_fast = temp_fast.next
+            temp = temp.next
+        ini = self.head
+        check = self.head.next
+        if ini.data == check.data:
+            ini.next = check.next
+            check = None
+        self.display()
+
+def main():
+    arr = list(map(int,input("Enter the numers in linked list:").split()))
+    ll = linkedlist()
+    for i in arr:
+        ll.insert(i)
+    ll.display()
+    ll.rem_dup()
+
+if __name__ == '__main__':
+    main()
+        
+        
