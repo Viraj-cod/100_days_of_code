@@ -1,0 +1,46 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def hasCycle(head: ListNode, pos: int) -> bool:
+    if not head or not head.next:
+        return False
+    tail = head
+    loop_node = None
+    index = 1
+    while tail.next:
+        if index == pos:
+            loop_node = tail
+        tail = tail.next
+        index += 1
+    if pos != 0:
+        tail.next = loop_node
+    slow, fast = head, head
+    
+    while fast and fast.next:
+        slow = slow.next            
+        fast = fast.next.next       
+        
+        if slow == fast: 
+            return True
+    
+    return False  
+
+def create_linked_list(arr, pos):
+    head = ListNode(arr[0])
+    current = head
+    for value in arr[1:]:
+        current.next = ListNode(value)
+        current = current.next
+    
+    if pos > 0:
+        loop_node = head
+        for _ in range(1, pos):
+            loop_node = loop_node.next
+        current.next = loop_node
+    
+    return head
+
+head = create_linked_list([1, 3, 4], 2)
+print(hasCycle(head, 2))  # Output: True
