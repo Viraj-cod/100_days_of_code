@@ -1,0 +1,32 @@
+from typing import List
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        res = []
+        temp = []
+        for i in range(len(nums)):
+            count = 0
+            for j in range(len(nums)):
+                if nums[i] == nums[j] and nums[i] not in temp:
+                    count = count + 1
+            if count == 1:
+                res.append(nums[i])
+            elif count >= 2:
+                res.append(nums[i])
+                res.append(nums[i])
+            temp.append(nums[i])
+        ln = len(res)
+        if len(res) != len(nums):
+            while len(res) != len(nums):
+                res.append('_')
+            return ln,res
+        else:
+            return ln,res
+
+def main():
+    inp = list(map(int,input("Enter the elements of the array:").split()))
+    obj = Solution()
+    print(obj.removeDuplicates(inp))
+
+if __name__ == '__main__':
+    main()
