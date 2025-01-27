@@ -1,0 +1,32 @@
+def cnt(n,arr):
+    res = 0
+    for i in arr:
+        if i == n:
+            res += 1
+    return res
+
+def srt(arr1,arr2):
+    arr1 = arr1 + arr2
+    temp = arr1.copy()
+    temp2 = []
+    for i in temp:
+        count = 0
+        if i in temp2:
+            tms = cnt(i,temp2)
+            count = tms
+        for j in temp:
+            if i > j:
+                count += 1
+        arr1[count] = i
+        temp2.append(i)
+    return arr1
+    
+def main():
+    ar1 = list(map(int,input("1st array:").split()))
+    ar2 = list(map(int,input("2nd array:").split()))
+    try:
+        print(srt(ar1,ar2))
+    except:
+        print('error')
+if __name__ == '__main__':
+    main()
