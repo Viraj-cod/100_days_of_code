@@ -1,0 +1,26 @@
+def rem(nums,val):
+    k = 0
+    for i in range(len(nums)):
+        if nums[i] != val:
+            nums[k] = nums[i]
+            k += 1
+    return k,nums
+
+def main():
+    arr = list(map(int,input("Enter the elements:").split()))
+    num = int(input("Enter the number:"))
+    print(rem(arr,num))
+    
+if __name__ == '__main__':
+    main()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
