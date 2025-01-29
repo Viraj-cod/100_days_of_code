@@ -1,0 +1,28 @@
+def uni(arr):
+    k = 0
+    i = 0
+    while i != len(arr):
+        if len(arr) <= 2:
+            return 0
+        elif i == len(arr) - 2 and arr[i] == arr[i+1] or i == len(arr) - 1:
+            arr[k] = arr[i]
+            k += 1
+            break
+        elif i == 0 and arr[1] == arr[i]:
+            arr[k] = arr[i]
+            k += 1
+        elif arr[i] == arr[i+1] and arr[i] != arr[i-1]:
+            arr[k] = arr[i]
+            k += 1
+        i += 1
+    return k
+        
+def main():
+    ele = list(map(int,input("Enter the elements:").split()))
+    try:
+        print(uni(ele))
+    except Exception as e:
+        print('Error is:',e)
+        
+if __name__ == '__main__':
+    main()
