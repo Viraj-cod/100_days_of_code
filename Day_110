@@ -1,0 +1,30 @@
+def rot(arr,n):
+    re = len(arr) - n
+    re_two = re
+    #el = len(arr) - (n+1)
+    i = 0
+    while re != len(arr):
+        temp = arr[i]
+        arr[i] = arr[re]
+        arr[re] = temp
+        i += 1
+        re += 1
+    if len(arr) % 2 != 0:
+        new_re = len(arr) - (n+1)
+        el = arr[new_re]
+        while re_two != len(arr):
+            arr[new_re] = arr[re_two]
+            re_two += 1
+            new_re += 1
+        arr[re_two-1] = el 
+        return arr
+    else:
+        return arr
+
+def main():
+    ele = list(map(int,input("enter the elements:").split()))
+    num = int(input("Enter the number of rotations:"))
+    print(rot(ele,num))
+
+if __name__ == '__main__':
+    main()
