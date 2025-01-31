@@ -1,0 +1,80 @@
+def num(ll):
+    temp = ll.head
+    res = 0
+    i = 1
+    while temp is not None:
+        tl = ll.count()
+        temp2 = ll.head
+        while tl != i:
+            temp2 = temp2.next
+            tl -= 1
+        dt = temp2.data
+        data = dt * (10**(i-1))
+        res = res + data
+        i += 1
+        temp = temp.next
+    return res
+
+def lst(num):
+    temp = []
+    while num > 0:
+        a = num % 10
+        num = num // 10
+        temp.append(a)
+    return temp
+
+def create(lst,ll):
+    ll.head = None
+    i = len(lst) - 1
+    while i >= 0:
+        ll.insert(lst[i])
+        i -= 1
+    ll.display()
+        
+class node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,val):
+        new = node(val)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new
+    
+    def display(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.data,end='->')
+            temp = temp.next
+        print(None)
+    
+    def count(self):
+        n = 1
+        temp = self.head
+        while temp.next is not None:
+            n += 1
+            temp = temp.next
+        return n
+
+def main():
+    arr= list(map(int,input("Enter elements:").split()))
+    arr2 = list(map(int,input("Enter elements:").split()))
+    ll = linkedlist()
+    ll2 = linkedlist()
+    for i in arr:
+        ll.insert(i)
+    for i in arr2:
+        ll2.insert(i)
+    create((lst(num(ll)+ num(ll2))),ll)
+    
+if __name__ == '__main__':
+    main()
