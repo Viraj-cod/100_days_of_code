@@ -1,0 +1,44 @@
+def srt(arr):
+    temp = arr.copy()
+    for i in range(len(arr)):
+        count = 0
+        for j in range(len(arr)):
+            if i > j:
+                count += 1
+        temp[count] = arr[i]
+    return temp
+class solution:
+    def maxprofit(self,arr):
+        if len(arr) == 1 or len(arr) == 0 or arr == srt(arr):
+            return 0
+        elif arr[0] >= arr[1]:
+            start = arr[1]
+            end = arr[2]
+            i = 2
+        else:
+            start = arr[0]
+            end = arr[1]
+            i = 1
+        res = 0
+        while i <= len(arr) - 2: #3
+            if start < end and end < arr[i+1]:
+                end = arr[i+1]
+                i += 1
+                continue
+            elif start < end and end > arr[i+1]:
+                res = res + (end - start)
+                start = arr[i+1] 
+                if arr[i+2] == True:
+                    end = arr[i+2]
+                else:
+                    end = arr[i+2]
+                    break
+            i += 1
+        return res + (end-start)
+
+def main():
+    ele = list(map(int,input("Enter the elements:").split()))
+    res = solution()
+    print(res.maxprofit(ele))
+if __name__ == '__main__':
+    main()
