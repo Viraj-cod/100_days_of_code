@@ -1,0 +1,24 @@
+def hindex(arr):
+    if len(arr) == 1 and arr[0] >= 1:
+        return 1
+    elif len(arr) == 1 and arr[0] == 0:
+        return 0
+    else:
+        H = 0
+        ele = 0
+        for i in arr:
+            temp = 0
+            for j in arr:
+                if i in range(j+1):
+                    temp += 1
+            if temp > H and i > ele:
+                ele = i
+                H = temp
+        return ele
+
+def main():
+    ele = list(map(int,input("Enter the elements:").split()))
+    print(hindex(ele))
+
+if __name__ == '__main__':
+    main()
