@@ -1,0 +1,18 @@
+class solution:
+    def res(self,arr):
+        temp = []
+        for i in range(len(arr)):
+            emt = 1
+            for j in range(len(arr)):
+                if i != j:
+                    emt = emt * arr[j]
+            temp.append(emt)
+        return temp
+        
+def main():
+    ele = list(map(int,input("Enter the elements:").split()))
+    obj = solution()
+    print(obj.res(ele))
+    
+if __name__ == '__main__':
+    main()
