@@ -1,0 +1,30 @@
+class solution:
+    def candy(self,arr):
+        res = 0
+        i = 0
+        if len(arr) == 1:
+            return 1
+        while i <= len(arr) - 1:
+            if i == len(arr) - 1:
+                if arr[i] > arr[i-1]:
+                    res += 2
+                    break
+                elif arr[i] <= arr[i-1]:
+                    res += 1
+                    break
+            elif arr[i] > arr[i+1] or (arr[i] > arr[i-1] and i != 0):
+                res += 2
+            elif arr[i] < arr[i+1]:
+                res += 1
+            elif arr[i] == arr[i+1]:
+                res += 2
+            i += 1
+        return res
+
+def main():
+    rat = list(map(int,input("Enter the ratings:").split()))
+    obj = solution()
+    print(obj.candy(rat))
+
+if __name__ == '__main__':
+    main()
