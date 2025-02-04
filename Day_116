@@ -1,0 +1,25 @@
+import time
+def rain(arr):
+    res = 0
+    i = 1
+    bl = arr[0]
+    while i < len(arr)-2:
+        if arr[i] >= bl and arr[i] <= max(arr[i+1:]):
+            bl = arr[i]
+        elif arr[i] < bl:
+            res += bl - arr[i]
+        elif arr[i] >= bl and arr[i] >= max(arr[i+1:]):
+            continue
+        i += 1
+    if bl < arr[-1]:
+        res += bl - arr[-2]
+    return res
+    
+def main():
+    blocks = list(map(int,input("Enter the blocks:").split()))
+    a = time.time()
+    print(rain(blocks))
+    b = time.time()
+    print(b-a)
+if __name__ == '__main__':
+    main()
