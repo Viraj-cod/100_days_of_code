@@ -1,0 +1,39 @@
+def sol(e):
+    res = 0
+    i = 0
+    k = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000,'IV':4,'IX':9,'XL':40,'XC':90,'CD':400,'CM':900}
+    while i < len(e) - 1:
+        if (e[i] == 'I') and (e[i+1] != 'V' and e[i+1] !='X'):
+            res = res + k[e[i]]
+        elif (e[i] == 'X') and (e[i+1] != 'L' and e[i+1] !='C'):
+            res = res + k[e[i]]
+        elif (e[i] == 'C') and (e[i+1] != 'D' and e[i+1] !='M'):
+            res = res + k[e[i]]
+        elif (e[i] == 'I') and (e[i+1] == 'V' or e[i+1] =='X'):
+            temp = e[i]+e[i+1]
+            res = res + k[temp]
+            i += 2
+            continue
+        elif (e[i] == 'X') and (e[i+1] == 'L' or e[i+1] =='C'):
+            temp = e[i]+e[i+1]
+            res = res + k[temp]
+            i += 2
+            continue
+        elif (e[i] == 'C') and (e[i+1] == 'D' or e[i+1] =='M'):
+            temp = e[i]+e[i+1]
+            res = res + k[temp]
+            i += 2
+            continue
+        else:
+            res = res + k[e[i]]
+        i += 1
+    if e[-2:] != 'IV' and e[-2:] != 'IX' and e[-2:] != 'XL' and e[-2:] != 'XC' and e[-2:] != 'CD' and e[-2:] != 'CM':
+        return res + k[e[-1]]
+    return res 
+
+def main():
+    rom = input("Enter the roman number:")
+    print(sol(rom))
+
+if __name__ == '__main__':
+    main()
