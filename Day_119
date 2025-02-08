@@ -1,0 +1,27 @@
+class solution:
+    def lenghtlast(self,char):
+        temp = True
+        k = 0
+        i = -1
+        while i >= 0 - len(char):
+            if temp == False and char[i] == ' ':
+                break
+            elif char[i] == ' ':
+                i -= 1
+                continue
+            elif char[i] != ' ' and temp == True:
+                k += 1
+                temp = False
+            elif temp == False:
+                k += 1
+            i -= 1
+        return k
+
+def main():
+    ele = input("Give me the character:")
+    obj = solution()
+    print(obj.lenghtlast(ele))
+    
+if __name__ == '__main__':
+    main()
+
