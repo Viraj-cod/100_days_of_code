@@ -1,0 +1,70 @@
+class node:
+    def __init__(self,data):
+        self.data = data
+        self.left = None
+        self.right =None
+
+def inorder(root):
+    if root is None:
+        return
+    inorder(root.left)
+    print(root.data,end = ' ')
+    inorder(root.right)
+
+def preorder(root):
+    if root is None:
+        return
+    print(root.data,end=' ')
+    preorder(root.left)
+    preorder(root.right)
+
+def postorder(root):
+    if root is None:
+        return
+    postorder(root.left)
+    postorder(root.right)
+    print(root.data,end=' ')
+
+class BST:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self,val):
+        if self.root is None:
+            self.root = node(val)
+        else:
+            self._insert_recursively(self.root,val)
+    
+    def _insert_recursively(self,root,val):
+        if val < root.data:
+            if root.left is None:
+                root.left = node(val)
+            else:
+                self._insert_recursively(root.left,val)
+        else:
+            if root.right is None:
+                root.right = node(val)
+            else:
+                self._insert_recursively(root.right,val)
+    
+    def display(self,root,level = 0):
+        if root:
+            self.display(root.right,level+1)
+            print(' '*4*level + '->',root.data)
+            self.display(root.left,level+1)
+
+bst = BST()
+bst.insert(50)
+bst.insert(30)
+bst.insert(20)
+bst.insert(40)
+bst.insert(70)
+bst.insert(60)
+bst.insert(80)
+bst.display(bst.root)
+
+preorder(bst.root)
+print('\n')
+inorder(bst.root)
+print('\n')
+postorder(bst.root)
