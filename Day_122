@@ -1,0 +1,43 @@
+def mn(arr):
+    k = len(arr[0])
+    for i in arr:
+        temp = 0
+        for j in i:
+            temp = temp + 1
+        if temp < k:
+            k = temp
+    return k
+    
+def common_pre(arr):#["flower","flow","flight"]
+    i = 0
+    res = ''
+    alice = False
+    while i < mn(arr):
+        m = 1
+        while m < len(arr):
+            if arr[0][i] != arr[m][i]:
+                alice = True
+                break
+            m += 1
+        if alice == True:
+            break
+        else:
+            res = res + arr[0][i]
+        i += 1
+    if res:
+        return res
+    else:
+        return " "
+        
+def main():
+    print("Enter # to exit!")
+    ele = []
+    while True:
+        inp = input()
+        if inp == '#':
+            break
+        ele.append(inp)
+    print(common_pre(ele))
+        
+if __name__ == '__main__':
+    main()
