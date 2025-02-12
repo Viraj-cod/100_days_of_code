@@ -1,0 +1,35 @@
+def ransom(rans,magzn):
+    temp = ''
+    tempdict = {}
+    ransdict = {}
+    temp2 = ''
+    for i in magzn:
+        count = 0
+        if i not in temp:
+            for j in magzn:
+                if i == j:
+                    count = count + 1
+            tempdict[i] = count
+            temp = temp + i
+    for i in rans:
+        count = 0
+        if i not in temp2:
+            for j in rans:
+                if i == j:
+                    count += 1
+            ransdict[i] = count
+            try:
+                if ransdict[i] > tempdict[i]:
+                    return False
+            except:
+                return False
+            temp2 = temp2 + i
+    return True
+
+def main():
+    rans = input("Enter the ransom:")
+    magzn = input("Enter the magzn:")
+    print(ransom(rans,magzn))
+
+if __name__ == '__main__':
+    main()
