@@ -1,0 +1,27 @@
+def word(lst):
+    k = 0
+    s = ''
+    for i in lst:
+        if len(i) > k:
+            k = len(i)
+            s = i
+    return s
+
+def longest(sen):
+    i = 0
+    j = 0
+    temp2 = []
+    while i < len(sen):
+        if sen[i] == ' ':
+            temp2.append(sen[j:i])
+            j = i
+        i += 1
+    temp2.append(sen[j:])
+    return word(temp2)
+    
+def main():
+    sen = input("enter the sentence:")
+    print(longest(sen))
+
+if __name__ == '__main__':
+    main()
