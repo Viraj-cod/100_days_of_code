@@ -1,0 +1,54 @@
+class Solution:
+    def __init__(self,ele):
+        self.ele = ele
+        
+    def _reversewords(self):
+        i = 0
+        j = 0
+        temp = []
+        s_sgn = False
+        while i < len(self.ele):
+            if self.ele[i] != ' ' and s_sgn == False:
+                j = i
+                s_sgn = True
+            elif self.ele[i] == ' ':
+                temp.append(self.ele[j:i])
+                j = i
+            i += 1
+        temp.append(self.ele[j:])
+        return temp
+            
+    
+    def _c_rem(self):
+        arr = self._reversewords()
+        new = []
+        for i in arr:
+            if i != ' ' and i != '':
+                temp = ''
+                for j in i:
+                    if j == ' ':
+                        continue
+                    else:
+                        temp = temp + j
+                new.append(temp)
+        return new
+    
+    def res(self):
+        result=''
+        lst = self._c_rem()
+        i = len(self._c_rem()) - 1
+        while i >= 0:
+            if i != 0:
+                result = result + lst[i] + ' '
+            else:
+                result = result + lst[i]
+            i -= 1
+        return result
+
+def main():
+    sen = input("enter the sen:")
+    obj = Solution(sen)
+    print(obj.res())
+
+if __name__ == '__main__':
+    main()
