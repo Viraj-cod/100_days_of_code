@@ -1,0 +1,50 @@
+class node:
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def insert(root,val):
+    if root is None:
+        return node(val)
+    que = []
+    que.append(root)
+    while que:
+        current = que.pop(0)
+        
+        if current.left is None:
+            current.left = node(val)
+            return root
+        else:
+            que.append(current.left)
+        
+        if current.right is None:
+            current.right = node(val)
+            return root
+        else:
+            que.append(current.right)
+
+def depth(root):
+    
+    if root is not None:
+        if root.left is None:
+            kl.append(mx)
+            mx = 0
+        else:
+            depth(root.left)
+            mx += 1
+    elif root.right is not None:
+        depth(root.right)
+
+def display(root,level = 0):
+    if root:
+        display(root.right,level + 1)
+        print(' '*4*level+'->',root.val)
+        display(root.left,level+1)
+
+root = node(9)
+root = insert(root,4)
+root =insert(root,1)
+root =insert(root,4)
+root =insert(root,8)
+display(root)
