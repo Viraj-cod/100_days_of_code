@@ -1,0 +1,30 @@
+import string
+
+class solution:
+    def match(self,one):
+        temp = ''
+        i = len(one) - 1
+        while i >= 0:
+            temp = temp + one[i]
+            i -= 1
+        return one == temp
+    
+    def isPalindrome(self,s):
+        res = ''
+        for i in s:
+            if i in string.ascii_uppercase:
+                res = res + i.lower()
+            elif i.isalnum():
+                res = res + i
+        
+        return self.match(res)
+            
+
+def main():
+    inp = input("Enter the sentence:")
+    obj = solution()
+    print(obj.solution(inp))
+
+if __name__ == '__main__':
+    main()
+        
