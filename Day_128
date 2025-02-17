@@ -1,0 +1,22 @@
+class solution:
+    def strStr(self,haystack, needle):
+        bgn = 0
+        end = len(needle)
+        i = 0
+        while i < len(haystack):
+            if haystack[bgn:end] == needle:
+                return bgn
+            i += 1
+            bgn += 1
+            end += 1
+        return -1
+
+def main():
+    inp1 = input("Enter the First String:")
+    inp2 = input("Enter the second string:")
+    obj = solution()
+    print(obj.strStr(inp1,inp2))
+
+if __name__ == '__main__':
+    main()
+        
