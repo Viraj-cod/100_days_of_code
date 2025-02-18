@@ -1,0 +1,15 @@
+class Solution:
+    def twosum(self,ele,n):
+        for i in range(len(ele)):
+            for j in range(len(ele)):
+                if i != j:
+                    if ele[i] + ele[j] == n:
+                        return [i+1,j+1]
+def main():
+    arr = list(map(int,input("Enter the array elements:").split()))
+    trg = int(input("Enter the atrget number:"))
+    obj = Solution()
+    print(obj.twosum(arr,trg))
+
+if __name__ == '__main__':
+    main()
