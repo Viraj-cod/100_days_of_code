@@ -1,0 +1,14 @@
+def rev(num): 
+    temp = 0        
+    while num>0:
+        k = num % 10
+        temp = temp*10 + k
+        num = num // 10
+    return temp
+
+def main():
+    inp = int(input("Enter the number:"))
+    print(rev(inp))
+
+if __name__ == '__main__':
+    main()
