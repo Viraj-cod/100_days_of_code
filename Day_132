@@ -1,0 +1,36 @@
+class solution:
+    def wrong_p(self,word,sen):
+        s_words = self.sep(sen)
+        temp = {}
+        m = 0
+        for i in word:
+            if i not in temp.keys():
+                temp[i] = s_words[m]
+                m += 1
+            elif i in temp.keys():
+                if s_words[m] != temp[i]:
+                    m += 1
+                    return False
+                else:
+                    m+=1
+                    continue
+        return True
+        
+    def sep(self,sen):
+        temp = []
+        a = 0
+        for i in range(len(sen)):
+            if sen[i] == ' ':
+                temp.append(sen[a:i])
+                a = i + 1
+        temp.append(sen[a:])
+        return temp
+
+def main():
+    inp = input("Enter the word:")
+    sen = input("Enter the sentence:")
+    obj = solution()
+    print(obj.wrong_p(inp,sen))
+
+if __name__ == '__main__':
+    main()
