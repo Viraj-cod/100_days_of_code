@@ -1,0 +1,22 @@
+class solution:
+    def minsubarray(self,ar,trg):
+        sml= len(ar)
+        inn = False
+        for i in range(len(ar)):
+            for j in range(i,len(ar)+1):
+                if sum(ar[i:j]) == trg:
+                    if len(ar[i:j]) <= sml:
+                        sml = len(ar[i:j])
+                        inn = True
+        if inn:
+            return sml
+        return 0
+
+def main():
+    ar = list(map(int,input("Enter the elements:").split()))
+    target = int(input("Enter the target:"))
+    obj = solution()
+    print(obj.minsubarray(ar,target))
+
+if __name__ == '__main__':
+    main()
