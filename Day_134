@@ -1,0 +1,22 @@
+  class solution:
+    def isSubsequence(self, s, t):
+        if not t and not s:
+            return True
+        if not t:
+            return False
+        j = ''
+        for i in t:
+            if i in s:
+                j += i
+        
+        return s == j
+
+def main():
+    s = input("Enter the subsequences:")
+    t = input("Enter the main inp:")
+    obj = solution()
+    print(obj.isSubsequence(s,t))
+
+if __name__ == '__main__':
+    main()
+    
