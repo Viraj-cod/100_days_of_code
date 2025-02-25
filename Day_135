@@ -1,0 +1,21 @@
+class solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        for i in range(len(nums)):
+            start = nums[i]
+            for j in range(i,len(nums)):
+                if i != j and start == nums[j]:
+                    if j - i > k and nums[j] not in nums[j+1:]:
+                        #print(j,i)
+                        return False
+                    else:
+                        break
+        return True
+
+def main():
+    inp = list(map(int,input("Enter the nums:").split()))
+    k = int(input("Enter the target:"))
+    obj = solution()
+    print(obj.containsNearbyDuplicate(inp,k))
+
+if __name__ == '__main__':
+    main()
