@@ -1,0 +1,23 @@
+class solution:
+    def suns(self,day,days):
+        d = {'sunday':7,'monday':1,'tuesday':2,'wednesday':3,'thirsday':4,'friday':5,'saturday':6}
+        c = d[day]
+        #print(c)
+        count = 0
+        for i in range(days):
+            if c == 7:
+                count += 1
+                c = 1
+                continue
+            c += 1
+            
+        return count
+
+def main():
+    day=input("Enter the day:")
+    days = int(input("Enter the no. of days in month:"))
+    obj = solution()
+    print(obj.suns(day.lower(),days))
+    
+if __name__ == '__main__':
+    main()
