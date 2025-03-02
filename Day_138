@@ -1,0 +1,56 @@
+def srt(arr):
+    for _ in range(len(arr)):
+        for i in range(len(arr)-1):
+            if arr[i] < arr[i+1]:
+                arr[i],arr[i+1] = arr[i+1],arr[i]
+    return arr
+    
+class solution:
+    def lcm(self,arr):
+        k = max(arr)
+        temp = k
+        m = 2
+        while 1:
+            count = 0
+            for i in arr:
+                if k % i == 0:
+                    count += 1
+            if count == len(arr):
+                return k
+            else:
+                k = temp * m
+                m+=1
+    
+    def hcf(self,arr):
+        facts = srt(self.factors(min(arr)))
+        print(facts)
+        k =0
+        while 1:
+            count = 0
+            for i in arr:
+                if i % facts[k] == 0:
+                    count+=1
+            if count==len(arr):
+                return facts[k]
+            else:
+                k+=1
+    
+    def factors(self,num):
+        temp = []
+        for i in range(num+1):
+            if i != 0 and i != 1:
+                if num % i == 0:
+                    temp.append(i)
+        return temp
+
+def main():
+    nums = list(map(int,input("Enter the numbers:").split()))
+    n = int(input('Print 1 for LCM and 2 for HCF:'))
+    obj = solution()
+    if n == 1:
+        print(obj.lcm(nums))
+    else:
+        print(obj.hcf(nums))
+
+if __name__ == '__main__':
+    main()
