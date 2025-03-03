@@ -1,0 +1,23 @@
+class polution:
+    def fine(self,itr,reg,date,fine):
+        if date % 2 == 0:
+            temp = 0
+            for i in reg:
+                if i % 2 != 0:
+                    temp += fine
+        else:
+            temp = 0 
+            for i in reg:
+                if i % 2 == 0:
+                    temp += fine
+        return temp
+def main():
+    n = int(input("Enter the N:"))
+    reg_no = list(map(int,input("Enter the reg number:").split()))
+    dt = int(input("Enter the date:"))
+    fn = int(input("enter the fine:"))
+    obj = polution()
+    print(obj.fine(n,reg_no,dt,fn))
+
+if __name__ == '__main__':
+    main()
