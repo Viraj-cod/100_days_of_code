@@ -1,0 +1,13 @@
+def div(n,lst):
+    count = 0
+    for i in range(len(lst)):
+        for j in range(i,len(lst)):
+            if (lst[i]+lst[j]) % 2 == 0 and i!=j:
+                count += 1
+    return count
+n = int(input("Enter the no. of the testcase:"))
+for i in range(n):
+    ln = int(input("Enter the length of the array:"))
+    b = list(map(int,input("Enter the elemts:").split()))
+    print(div(ln,b))
+    
