@@ -1,0 +1,31 @@
+def srt(arr):
+    for i in range(len(arr)-1):
+        for j in range(len(arr)-1):
+            if arr[j] < arr[j+1]:
+                arr[j],arr[j+1] = arr[j+1],arr[j]
+    return arr
+
+def cal(num):
+    temp = []
+    for i in range(num):
+        for j in range(num):
+            if i + j == 12:
+                if srt([i,j]) not in temp:
+                    temp.append(srt([i,j]))
+    return temp
+
+def res(num,wh):
+    temp = cal(num)
+    for i in temp:
+        if i[0]*2 + i[1]*4 == wh:
+            return i
+    return [-1]
+
+def main():
+    k = int(input("enter the number:"))
+    for i in range(k):
+        car = int(input("enter no. of cars:"))
+        wh = int(input("enter the no. of wheels:"))
+        print(*res(car,wh))
+if __name__ == '__main__':
+    main()
