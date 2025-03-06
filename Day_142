@@ -1,0 +1,12 @@
+def veh(v,w):
+    for i in range(v,0,-1):
+        for j in range(v,0,-1):
+            if i + j == v and i*2+j*4 == w:
+                return i,j
+def main():
+    v = int(input("Enter the no. of vehicles:"))
+    w = int(input("Enter the no. of wheels:"))
+    print(veh(v,w))
+
+if __name__ == '__main__':
+    main()
