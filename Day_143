@@ -1,0 +1,71 @@
+class solution:
+    def res(self,k,num):
+        dct = {1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven',8:'eight',9:'nine',10:"ten",11:"eleven",12:"Twelve",13:"Thirteen",14:"Fourteen",15:"Fifteen",16:"Sixteen",17:"Seventeen",18:"Eighteen",19:"Nighteen",20:"Twenty"}
+        if k == 1:
+            return dct[num]
+        elif k == 2:
+            if num <= 20:
+                return dct[num]
+            elif num < 30:
+                temp = num % 20
+                return "Twenty" +dct[temp]
+            elif num <= 39:
+                if num == 30:
+                    return 'Thirty'
+                end = num % 10
+                return "Thirty"+dct[end]
+            else:
+                st = num // 10
+                end = num % 10
+                if end == 0:
+                    return dct[st] + 'ty'
+                return dct[st] + 'ty' + dct[end]
+        elif k == 3:
+            if num % 10 == 0:
+                st = num // 100
+                return dct[st] + 'hundred'
+            else:
+                temp = []
+                while num>0:
+                    tm = num % 10
+                    temp.append(tm)
+                    num = num // 10
+                if temp[1] == 2:
+                    return dct[temp[2]] + ' hundred ' + 'Twenty ' + dct[temp[0]]
+                elif temp[1] == 3:
+                    return dct[temp[2]] + ' hundred ' + 'Thirty ' + dct[temp[0]]
+                else:
+                    return dct[temp[2]] + ' hundred ' +dct[temp[1]] + 'ty ' + dct[temp[0]]
+
+        elif k == 4:
+            if num % 10 == 0:
+                st = num // 1000
+                return dct[st] + 'thousand'
+            else:
+                temp = []
+                while num>0:
+                    tm = num % 10
+                    temp.append(tm)
+                    num = num // 10
+                if temp[1] == 2:
+                    return dct[temp[3]]+ ' thousand '+dct[temp[2]] + ' hundred ' + 'Twenty ' + dct[temp[0]]
+                elif temp[1] == 2:
+                    return dct[temp[3]]+ ' thousand '+dct[temp[2]] + ' hundred ' + 'Thirty ' + dct[temp[0]]
+                else:
+                    return dct[temp[3]] +' thousand '+dct[temp[2]] + ' hundred ' +dct[temp[1]] + 'ty ' + dct[temp[0]]
+
+
+def main():
+    n = int(input("Enter the number:"))
+    k = n
+    l = 0
+    while n > 0:
+        l += 1
+        n = n // 10
+    obj = solution()
+    if l > 0 and l<=4:
+        print(obj.res(l,k))
+    else:
+        main()
+if __name__ == '__main__':
+    main()
