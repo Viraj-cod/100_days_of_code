@@ -1,0 +1,35 @@
+class solution:
+    def lenoflongsub(self,sen):
+        temp = []
+        uni=self.sub(sen)
+        st=0
+        en=1
+        sub = uni[st:en]
+        for i in range(len(uni)+1):
+            if sub in sen:
+                temp.append(sub)
+                en+=1
+                sub = uni[st:en]
+            elif sub not in sen:
+                st+=1
+                sub = uni[st:en]
+        return self.res(temp)
+    def sub(self,sen):
+        temp = ''
+        for i in sen:
+            if i not in temp:
+                temp = temp + i
+        return temp
+    def res(self,arr):
+        tp = len(arr[0])
+        for i in arr:
+            if len(i) > tp:
+                tp = len(i)
+        return tp
+def main():
+    snt = input("Enter the sentence:")
+    onj = solution()
+    print(onj.lenoflongsub(snt))
+
+if __name__ == '__main__':
+    main()
