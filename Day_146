@@ -1,0 +1,13 @@
+def dec_mx(arr,f=0,s=0,t=0):
+    if f ==0 and s == 0 and len(arr) >=2:
+        f = arr[0]
+        s = f
+    if t == len(arr):
+        return s
+    if arr[t] > f:
+        s = f
+        f = arr[t]
+    return dec_mx(arr,f,s,t+1)
+
+print(dec_mx([5,4,6,3,2,8]))
+
