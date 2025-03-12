@@ -1,0 +1,15 @@
+def quick(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    pivot = arr[-1]
+    less = [i for i in arr[:-1] if i <= pivot]
+    more = [j for j in arr[:-1] if j > pivot]
+    return quick(less) + [pivot] + quick(more)
+
+def main():
+    arr = list(map(int,input("enter the elements:").split()))
+    print(quick(arr))
+
+if __name__ == '__main__':
+    main()
