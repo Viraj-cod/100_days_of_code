@@ -1,0 +1,22 @@
+#octal to binary
+def oct_to_bin(num):
+    temp = []
+    while num>0:
+        temp.append(num%10)
+        num = num // 10
+    temp = temp[::-1]
+    #print(temp)
+    res = ''
+    for i in temp:
+        tp = ''
+        m = 3
+        while m != 0:
+            kl = i % 2
+            tp = tp + str(kl)
+            i = i // 2
+            m-=1
+        tp = tp[::-1]
+        res = res + tp
+    return res
+
+print(oct_to_bin(23))
