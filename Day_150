@@ -1,0 +1,28 @@
+def mtch(org,upd):
+    k = upd.copy()
+    m = 0
+    for i in org:
+        upd[i-1] = k[m]
+        m += 1
+    return upd
+        
+def drum_beat(ini,pos):
+    ori = pos.copy()
+    fn = 0
+    while True:
+        res = mtch(ini,pos)
+        fn+=1
+        if res == ori:
+            break
+        pos = res
+    return fn
+        
+def main():
+    jersey = list(map(int,input("Enter the jersey numbers:").split()))
+    ini_pos = list(map(int,input("Enter the initial positions:").split()))
+    print(drum_beat(jersey,ini_pos))
+
+if __name__ == '__main__':
+    main()
+        
+        
