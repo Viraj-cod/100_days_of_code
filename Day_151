@@ -1,0 +1,28 @@
+#dynamic queue
+class dyqueue:
+    def __init__(self):
+        self.arr = []
+    
+    def enque(self,val):
+        self.arr = self.arr + [val]
+    
+    def deque(self):
+        if not self.arr:
+            print('no element to remove!')
+        else:
+            self.arr = self.arr[1:]
+    
+    def dis(self):
+        print(self.arr)
+    
+dqu = dyqueue()
+dqu.enque(1)
+dqu.enque(2)
+dqu.enque(3)
+dqu.enque(4)
+dqu.enque(5)
+dqu.dis()
+dqu.deque()
+dqu.deque()
+dqu.dis()
+
