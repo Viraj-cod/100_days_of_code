@@ -1,0 +1,94 @@
+class node:
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+class bst:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self,val):
+        if self.root is None:
+            self.root = node(val)
+        else:
+            self._insert_recursively(self.root,val)
+    
+    def _insert_recursively(self,root,val):
+        if val<root.val:
+            if root.left is None:
+                root.left = node(val)
+            else:
+                self._insert_recursively(root.left,val)
+        else:
+            if root.right is None:
+                root.right = node(val)
+            else:
+                self._insert_recursively(root.right,val)
+    
+    def display(self,root,level=0):
+        if root is not None:
+            self.display(root.right,level+1)
+            print(' '*4*level+'->',root.val)
+            self.display(root.left,level+1)
+    
+    def search(self,root,val):
+        if root is None or root.val == val:
+            return root
+        else:
+            if val > root.val:
+                return self.search(root.right,val)
+            return self.search(root.left,val)
+    
+    def insert2(self,root,val):
+        if root is None:
+            return node(val)
+        else:
+            if val > root.val:
+                root.right = self.insert(root.right,val)
+            else:
+                root.left = self.insert(root.left,val) 
+        return root
+    
+    def delete(self,root,val):
+        if root is None:
+            return None
+        if val > root.val:
+            root.right = self.delete(root.right,val)
+        elif val < root.val:
+            root.left = self.delete(root.left,val)
+        else:
+            if root.left is None:
+                temp = root.right
+                root = None
+                return temp
+            elif root.right is None:
+                temp = root.left
+                root = None
+                return temp
+            
+            c = root.right
+            while c.left:
+                c = c.left
+            
+            root.val = c.val
+            root.right = self.delete(root.right,c.val)
+        return root
+            
+            
+Bst = bst()
+Bst.insert(7)
+Bst.insert(9)
+Bst.insert(8)
+Bst.insert(1)
+Bst.insert(10)
+Bst.insert(0)
+
+Bst.display(Bst.root)
+if Bst.search(Bst.root,90):
+    n = Bst.search(Bst.root,90)
+    print(n.val)
+else:
+    print('not found')
+
+Bst.delete(Bst.root,7)
+Bst.display(Bst.root)
