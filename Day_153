@@ -1,0 +1,23 @@
+def find(arr,trg):
+    k = arr.copy()
+    
+    if trg in arr:
+        while True:
+            mid = len(arr)//2
+            if arr[mid] == trg:
+                return arr[mid]
+            elif trg in arr[:mid]:
+                arr = arr[:mid]
+            elif trg in arr[mid:]:
+                arr = arr[mid:]
+
+    else:
+        return 'Element not found in array'
+        
+def main():
+    a = list(map(int,input("Enter the array:").split()))
+    t = int(input("Enter the target:"))
+    print(find(a,t))
+
+if __name__ == '__main__':
+    main()
