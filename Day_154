@@ -1,0 +1,14 @@
+def bubble_sort(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)-1):
+            if len(arr[j]) > len(arr[j+1]):
+                arr[j],arr[j+1]=arr[j+1],arr[j]
+    return arr
+
+def main():
+    inp =input("Enter the strings:").split()
+    print(bubble_sort(inp))
+
+if __name__ == '__main__':
+    main()
+        
