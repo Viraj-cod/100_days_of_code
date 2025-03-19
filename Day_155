@@ -1,0 +1,57 @@
+class node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self,data):
+        new = node(data)
+        if self.head is None:
+            self.head = new
+            new.next = self.head
+            return
+        temp = self.head
+        while temp.next!=self.head:
+            temp= temp.next
+        temp.next = new
+        new.next= self.head
+    
+    def insert2(self,data):
+        new = node(data)
+        if self.head is None:
+            self.head = new
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp=temp.next
+        temp.next=new
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data,end='->')
+            temp = temp.next
+        print('')
+    
+    def detect_loop(self):
+        slow=self.head
+        fast = self.head.next
+        while fast.next:
+            if fast.data == slow.data:
+                return 'loop detected!'
+            fast=fast.next
+        return 'No Loop Detected!'
+
+def main():
+    n = list(map(int,input("Enter the elements:").split()))
+    ll = linkedlist()
+    for i in n:
+        ll.insert2(i)
+    #ll.display()
+    print(ll.detect_loop())
+
+if __name__ == '__main__':
+    main()
+    
