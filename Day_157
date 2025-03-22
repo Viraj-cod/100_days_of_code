@@ -1,0 +1,57 @@
+# T pattern
+for i in range(10):
+    if i == 0:
+        print('#'*10)
+    else:
+        print(' '*4+'##')
+
+#I pattern
+for i in range(10):
+    if i == 0:
+        print('#'*10)
+    elif i == 9:
+        print('#'*10)
+    else:
+        print(' '*4+'##')
+        
+#o pttern
+for i in range(10):
+    if i == 0:
+        print('#'*10)
+    elif i == 9:
+        print('#'*10)
+    else:
+        print('##'+' '*6+'##')
+
+#n pattern
+for i in range(10):
+    print('#'+' '*i+'#'+' '*(10-i)+'#')
+
+#k pattern
+k=5
+l=0
+for i in range(10):
+    if k > 0:
+        print('#'+' '*k+'#')
+        k-=1
+    else:
+        print('#'+' '*l+'#')
+        l+=1
+    
+#x pattern
+
+k=0
+r = 22
+for i in range(12):
+    print(' '*i+'#',r*' '+'#')
+    #print(r*' '+'#')
+    r=r-2
+for i in range(12,0,-1):
+    print(' '*i+'#',' '*k+'#')
+    k+=2
+#v pattern
+r = 22
+for i in range(12):
+    print(' '*i+'#',r*' '+'#')
+    #print(r*' '+'#')
+    r=r-2
